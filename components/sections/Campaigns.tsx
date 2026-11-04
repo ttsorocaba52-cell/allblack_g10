@@ -2,6 +2,7 @@
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
 import { Slot } from "../Slot";
+import { CountUp } from "../interactive/CountUp";
 
 export function Campaigns({ v }: { v: V }) {
   return (
@@ -90,7 +91,7 @@ export function Campaigns({ v }: { v: V }) {
                   VISUALIZAÇÕES
                 </span>
                 <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(80px,9cqw,140px)",lineHeight:".85"}}>
-                  9,1M
+                  <CountUp value={"9,1M"} />
                 </span>
               </div>
               <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",borderTop:"1px solid var(--color-divider)"}}>
@@ -99,7 +100,7 @@ export function Campaigns({ v }: { v: V }) {
                     <div style={{padding:"14px 10px 0 0",display:"flex",flexDirection:"column",gap:"4px"}}>
                       <span style={{display:"flex",alignItems:"center",gap:"8px",fontFamily:"var(--font-display)",fontSize:"clamp(34px,3.4cqw,48px)",lineHeight:"1"}}>
                         <i className={`ph ${st.icon}`} style={{fontSize:"20px",color:"var(--color-accent)"}}></i>
-                        {st.a}
+                        <CountUp value={st.a} />
                       </span>
                       <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".12em",color:"var(--color-neutral-500)"}}>
                         {st.b}
@@ -152,7 +153,7 @@ export function Campaigns({ v }: { v: V }) {
                           <Fragment key={_i12}>
                             <div style={{display:"flex",flexDirection:"column",gap:"2px"}}>
                               <span style={{fontFamily:"var(--font-display)",fontSize:"28px",lineHeight:"1"}}>
-                                {st.a}
+                                <CountUp value={st.a} />
                               </span>
                               <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".12em",color:"var(--color-neutral-500)"}}>
                                 {st.b}

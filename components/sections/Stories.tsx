@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
+import { StoryChart } from "../interactive/StoryChart";
+import { CountUp } from "../interactive/CountUp";
 
 export function Stories({ v }: { v: V }) {
   return (
@@ -47,7 +49,7 @@ export function Stories({ v }: { v: V }) {
                     </div>
                     <div style={{position:"absolute",left:"0",right:"0",bottom:"0",padding:"28px 10px 10px",pointerEvents:"none",background:"linear-gradient(to top,rgba(9,9,9,.92),transparent)",display:"flex",flexDirection:"column",gap:"2px"}}>
                       <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(24px,2.6cqw,36px)",lineHeight:".95"}}>
-                        {f.stat}
+                        <CountUp value={f.stat} />
                       </span>
                       <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".1em",color:"var(--color-neutral-300)"}}>
                         {f.statL}
@@ -72,36 +74,17 @@ export function Stories({ v }: { v: V }) {
                   INSIGHTS OFICIAIS · 29 SET – 28 OUT
                 </span>
               </div>
-              <svg viewBox="0 0 600 220" style={{width:"100%",display:"block"}} role="img" aria-label="Gráfico: média acima de 80 mil, pico próximo de 180 mil visualizações">
-                {v.gridLines.map((g: any, _i8: number) => (
-                  <Fragment key={_i8}>
-                    <line x1="20" x2="580" y1={g.y} y2={g.y} stroke="#2e2f31" strokeWidth="1" />
-                    <text x="584" y={g.y} fill="#6b6e73" fontFamily="IBM Plex Mono" fontSize="9" dominantBaseline="middle">
-                      {g.v}
-                    </text>
-                  </Fragment>
-                ))}
-                <path d={v.storyArea} fill="rgba(245,196,0,.10)" />
-                <line x1="20" x2="580" y1="128" y2="128" stroke="#F2F0EB" strokeWidth="1" strokeDasharray="4 4" opacity=".6" />
-                <text x="24" y="120" fill="#F2F0EB" fontFamily="IBM Plex Mono" fontSize="10">
-                  MÉDIA 80K+
-                </text>
-                <polyline points={v.storyPoints} fill="none" stroke="#F5C400" strokeWidth="2" strokeLinejoin="round" />
-                <circle cx={v.storyPeak.x} cy={v.storyPeak.y} r="5" fill="#090909" stroke="#F5C400" strokeWidth="2" />
-                <text x={v.storyPeak.tx} y={v.storyPeak.ty} fill="#F2F0EB" fontFamily="IBM Plex Mono" fontSize="10">
-                  TOP 173K
-                </text>
-              </svg>
+              <StoryChart />
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:"10px"}}>
               {v.storyCards.map((c: any, _i7: number) => (
                 <Fragment key={_i7}>
-                  <div className="card hover-ring" data-reveal="200" style={{padding:"16px",gap:"8px",background:"var(--color-surface)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s"}}>
+                  <div className="spot card hover-ring" data-reveal="200" style={{padding:"16px",gap:"8px",background:"var(--color-surface)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s"}}>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".14em",color:c.srcColor}}>
                       {c.src}
                     </span>
                     <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(34px,3.2cqw,46px)",lineHeight:".95"}}>
-                      {c.v}
+                      <CountUp value={c.v} />
                     </span>
                     <span style={{fontSize:"12px",lineHeight:"1.4",color:"var(--color-neutral-400)"}}>
                       {c.l}

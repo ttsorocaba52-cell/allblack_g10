@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
+import { FillBar } from "../interactive/FillBar";
+import { CountUp } from "../interactive/CountUp";
 
 export function Instagram({ v }: { v: V }) {
   return (
@@ -53,7 +55,7 @@ export function Instagram({ v }: { v: V }) {
                 <Fragment key={_i7}>
                   <div style={{padding:"16px 12px 16px 0",display:"flex",flexDirection:"column",gap:"2px"}}>
                     <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(30px,3cqw,42px)",lineHeight:"1",color:p.c}}>
-                      {p.v}
+                      <CountUp value={p.v} />
                     </span>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                       {p.l}
@@ -79,7 +81,7 @@ export function Instagram({ v }: { v: V }) {
                 SEGUIDORES NO INSTAGRAM
               </span>
               <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(120px,17cqw,260px)",lineHeight:".8"}}>
-                989K
+                <CountUp value={"989K"} />
               </span>
               <span style={{display:"flex",alignItems:"center",gap:"12px",fontSize:"15px",color:"var(--color-neutral-300)"}}>
                 <span style={{display:"inline-block",padding:"3px 10px",background:"#F5C400",color:"#090909",transform:"skewX(-12deg)",fontFamily:"var(--font-mono)",fontSize:"11px",fontWeight:"500",letterSpacing:".12em"}}>
@@ -91,12 +93,12 @@ export function Instagram({ v }: { v: V }) {
             <div style={{display:"grid",gridTemplateColumns:v.igKpiCols,gap:"10px"}}>
               {v.igKpis.map((k: any, _i7: number) => (
                 <Fragment key={_i7}>
-                  <div className="card hover-ring" style={{padding:"16px",gap:"6px",background:"var(--color-surface)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s"}}>
+                  <div className="spot card hover-ring" style={{padding:"16px",gap:"6px",background:"var(--color-surface)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s"}}>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".14em",color:"var(--color-accent-400)"}}>
                       {k.p}
                     </span>
                     <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(36px,3.4cqw,50px)",lineHeight:".95"}}>
-                      {k.v}
+                      <CountUp value={k.v} />
                     </span>
                     <span style={{fontSize:"12px",lineHeight:"1.4",color:"var(--color-neutral-400)"}}>
                       {k.l}
@@ -118,7 +120,7 @@ export function Instagram({ v }: { v: V }) {
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,260px),1fr))",gap:"10px"}}>
           {v.igBreakdowns.map((b: any, _i5: number) => (
             <Fragment key={_i5}>
-              <div className="card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
+              <div className="spot card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
                 <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                   {b.title}
                 </span>
@@ -134,7 +136,7 @@ export function Instagram({ v }: { v: V }) {
                         </span>
                       </div>
                       <div style={{height:"4px",background:"var(--color-neutral-800)"}}>
-                        <div style={{height:"100%",width:r.w,background:r.c}}></div>
+                        <FillBar w={r.w} c={r.c} />
                       </div>
                     </div>
                   </Fragment>
@@ -164,12 +166,12 @@ export function Instagram({ v }: { v: V }) {
                       {t.t}
                     </span>
                     <div style={{height:"3px",background:"var(--color-neutral-800)"}}>
-                      <div style={{height:"100%",width:t.w,background:"var(--color-accent)"}}></div>
+                      <FillBar w={t.w} c={"var(--color-accent)"} />
                     </div>
                   </div>
                   <span style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"2px"}}>
                     <span style={{fontFamily:"var(--font-display)",fontSize:"28px",lineHeight:"1"}}>
-                      {t.v}
+                      <CountUp value={t.v} />
                     </span>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",color:"var(--color-neutral-500)"}}>
                       {t.likes} ♥

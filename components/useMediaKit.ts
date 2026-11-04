@@ -156,15 +156,7 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
   const showTags = showDataTags;
   const W = siteW || 1400;
 
-  // Gráfico de stories
-  const sv: number[] = D.storyValues;
-  const X = (i: number) => 20 + i * (520 / (sv.length - 1));
-  const Y = (val: number) => 200 - (val / 200) * 180;
-  const pts = sv.map((val, i) => X(i).toFixed(1) + "," + Y(val).toFixed(1));
-  const pi = sv.indexOf(Math.max(...sv));
-
   const plat = D.platforms.find((p: { id: string }) => p.id === platform);
-  const maxI = plat.chart.indexOf(Math.max(...plat.chart));
   const tag = (real: boolean | string) => ({
     tagClass: real ? "tag-accent" : "tag-neutral",
     tagText: real === "brief" ? "BRIEFING" : real ? "INSIGHTS" : "ILUSTRATIVO",
@@ -197,7 +189,6 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
       };
     }),
     plat: { ...plat, summary: SUMMARY[plat.id], headValue: plat.head.v, headLabel: plat.head.l, headTag: tag(plat.head.real).tagClass, headTagText: tag(plat.head.real).tagText },
-    chartBars: plat.chart.map((val: number, i: number) => ({ h: val + "%", c: i === maxI ? "#F5C400" : "#2e2f31" })),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     platMetrics: plat.metrics.map((m: any) => ({
       ...m, ...tag(m.real), label: m.l.split(" · ")[0],
@@ -206,10 +197,6 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
     })),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     storyFrames: D.storyFrames.map((f: any) => ({ ...f, segs: [1, 2, 3].map((k) => ({ c: k <= f.on ? "#F2F0EB" : "rgba(242,240,235,.3)" })) })),
-    gridLines: [50, 100, 150].map((val) => ({ y: Y(val).toFixed(1), v: val + "K" })),
-    storyPoints: pts.join(" "),
-    storyArea: "M" + X(0) + ",200 L" + pts.join(" L") + " L" + X(sv.length - 1) + ",200 Z",
-    storyPeak: { x: X(pi).toFixed(1), y: Y(sv[pi]).toFixed(1), tx: (X(pi) + 10).toFixed(1), ty: (Y(sv[pi]) + 4).toFixed(1) },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     storyCards: D.storyCards.map((c: any) => ({ ...c, srcColor: c.real ? "var(--color-accent-400)" : "var(--color-neutral-500)" })),
     storyWhy: D.storyWhy,
@@ -262,10 +249,6 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
     partnerCols: "repeat(" + (W < 640 ? 2 : 5) + ",minmax(0,1fr))",
     partners: D.partners.map(([name, handle, k]: [string, string, string]) => ({ name, handle, logoBg: "url(/assets/logos/" + k + ".png)" })),
     ytKpis: D.yt.kpis,
-    ytMonths: D.yt.daily.map((val: number, i: number, a: number[]) => {
-      const mx = Math.max(...a), pk = val === mx;
-      return { m: [0, 6, 13, 20, 27].includes(i) ? pad2(i + 1) : "", v: pk ? val.toFixed(2).replace(".", ",") + "M" : "", h: ((val / mx) * 88).toFixed(0) + "%", c: pk ? "#F5C400" : "#2e2f31", tc: "var(--color-text)" };
-    }),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ytTop: D.yt.top.map((t: any, i: number) => ({ ...t, n: pad2(i + 1), nc: i === 0 ? "var(--color-accent)" : "var(--color-neutral-600)", w: ((t.n / 6.8) * 100).toFixed(0) + "%" })),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

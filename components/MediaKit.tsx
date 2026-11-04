@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useMediaKit, type MediaKitOptions } from "./useMediaKit";
 import { Nav } from "./sections/Nav";
 import { Hero } from "./sections/Hero";
@@ -16,6 +17,19 @@ import { Modal } from "./sections/Modal";
 
 export function MediaKit(props: MediaKitOptions) {
   const v = useMediaKit(props);
+
+  // Posição do mouse dentro do card .spot, usada pelo brilho em app/globals.css
+  useEffect(() => {
+    const onMove = (e: PointerEvent) => {
+      const el = (e.target as Element | null)?.closest?.(".spot") as HTMLElement | null;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty("--mx", e.clientX - r.left + "px");
+      el.style.setProperty("--my", e.clientY - r.top + "px");
+    };
+    document.addEventListener("pointermove", onMove, { passive: true });
+    return () => document.removeEventListener("pointermove", onMove);
+  }, []);
   return (
     <>
       <div

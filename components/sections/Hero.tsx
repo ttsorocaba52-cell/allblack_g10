@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
+import { CountUp } from "../interactive/CountUp";
 
 export function Hero({ v }: { v: V }) {
   return (
@@ -69,7 +70,7 @@ export function Hero({ v }: { v: V }) {
               <Fragment key={_i6}>
                 <div style={{padding:"18px 18px 4px 0",display:"flex",flexDirection:"column",gap:"6px"}}>
                   <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(34px,3.4cqw,48px)",lineHeight:"1"}}>
-                    {s.v}
+                    <CountUp value={s.v} />
                   </span>
                   <span style={{fontSize:"12px",color:"var(--color-neutral-400)",lineHeight:"1.35"}}>
                     {s.l}

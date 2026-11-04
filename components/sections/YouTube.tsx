@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
+import { DailyBars } from "../interactive/DailyBars";
+import { FillBar } from "../interactive/FillBar";
+import { CountUp } from "../interactive/CountUp";
 
 export function YouTube({ v }: { v: V }) {
   return (
@@ -44,7 +47,7 @@ export function YouTube({ v }: { v: V }) {
                 <div style={{display:"flex",flexDirection:"column",gap:"10px",padding:"clamp(20px,2.6cqw,32px)",borderRadius:"var(--radius-md)",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
                   <i className={`ph ${c.icon}`} style={{fontSize:"26px",color:"var(--color-accent)"}}></i>
                   <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(64px,7.4cqw,120px)",lineHeight:".85"}}>
-                    {c.v}
+                    <CountUp value={c.v} />
                   </span>
                   <span style={{fontSize:"15px",color:"var(--color-neutral-300)"}}>
                     {c.l}
@@ -68,7 +71,7 @@ export function YouTube({ v }: { v: V }) {
                   {k.code}
                 </span>
                 <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(48px,5cqw,76px)",lineHeight:".88"}}>
-                  {k.v}
+                  <CountUp value={k.v} />
                 </span>
                 <span style={{fontSize:"13px",color:"var(--color-neutral-400)"}}>
                   {k.l}
@@ -90,21 +93,7 @@ export function YouTube({ v }: { v: V }) {
                 TOTAL 25,1M
               </span>
             </div>
-            <div style={{display:"flex",alignItems:"flex-end",gap:"6px",height:"200px"}}>
-              {v.ytMonths.map((m: any, _i7: number) => (
-                <Fragment key={_i7}>
-                  <div style={{flex:"1",height:"100%",display:"flex",flexDirection:"column",justifyContent:"flex-end",alignItems:"center",gap:"6px"}}>
-                    <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",color:m.tc}}>
-                      {m.v}
-                    </span>
-                    <div style={{width:"100%",height:m.h,background:m.c,borderRadius:"1px"}}></div>
-                    <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".06em",color:"var(--color-neutral-500)"}}>
-                      {m.m}
-                    </span>
-                  </div>
-                </Fragment>
-              ))}
-            </div>
+            <DailyBars />
             <div style={{display:"flex",gap:"18px",flexWrap:"wrap",fontSize:"12px",color:"var(--color-neutral-400)"}}>
               <span style={{display:"flex",alignItems:"center",gap:"8px"}}>
                 <span style={{width:"10px",height:"10px",background:"var(--color-accent)"}}></span>
@@ -131,11 +120,11 @@ export function YouTube({ v }: { v: V }) {
                       {t.t}
                     </span>
                     <div style={{height:"3px",background:"var(--color-neutral-800)"}}>
-                      <div style={{height:"100%",width:t.w,background:"var(--color-accent)"}}></div>
+                      <FillBar w={t.w} c={"var(--color-accent)"} />
                     </div>
                   </div>
                   <span style={{fontFamily:"var(--font-display)",fontSize:"26px",lineHeight:"1"}}>
-                    {t.v}
+                    <CountUp value={t.v} />
                   </span>
                 </div>
               </Fragment>
@@ -145,7 +134,7 @@ export function YouTube({ v }: { v: V }) {
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,260px),1fr))",gap:"10px",marginTop:"10px"}}>
           {v.ytBreakdowns.map((b: any, _i5: number) => (
             <Fragment key={_i5}>
-              <div className="card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
+              <div className="spot card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
                 <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                   {b.title}
                 </span>
@@ -161,7 +150,7 @@ export function YouTube({ v }: { v: V }) {
                         </span>
                       </div>
                       <div style={{height:"4px",background:"var(--color-neutral-800)"}}>
-                        <div style={{height:"100%",width:r.w,background:r.c}}></div>
+                        <FillBar w={r.w} c={r.c} />
                       </div>
                     </div>
                   </Fragment>

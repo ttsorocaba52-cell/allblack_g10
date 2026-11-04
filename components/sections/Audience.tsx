@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
+import { PlatformBars } from "../interactive/PlatformBars";
+import { FillBar } from "../interactive/FillBar";
+import { CountUp } from "../interactive/CountUp";
 
 export function Audience({ v }: { v: V }) {
   return (
@@ -68,7 +71,7 @@ export function Audience({ v }: { v: V }) {
                 </span>
                 <span style={{marginTop:"auto",display:"flex",flexDirection:"column",gap:"2px"}}>
                   <span style={{fontFamily:"var(--font-display)",fontSize:p.tileSize,lineHeight:".95"}}>
-                    {p.preview}
+                    <CountUp value={p.preview} />
                   </span>
                   <span style={{fontSize:"11px",color:"var(--color-neutral-500)"}}>
                     {p.previewLabel}
@@ -94,7 +97,7 @@ export function Audience({ v }: { v: V }) {
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:"8px"}}>
               <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(84px,10cqw,160px)",lineHeight:".82"}}>
-                {v.plat.headValue}
+                <CountUp value={v.plat.headValue} />
               </span>
               <span style={{fontSize:"15px",color:"var(--color-neutral-300)"}}>
                 {v.plat.headLabel}
@@ -103,29 +106,12 @@ export function Audience({ v }: { v: V }) {
                 {v.plat.summary}
               </span>
             </div>
-            <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
-              <div style={{display:"flex",justifyContent:"space-between",flexWrap:"wrap",gap:"8px",fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".12em",color:"var(--color-neutral-500)"}}>
-                <span>
-                  {v.plat.chartLabel}
-                </span>
-                <span style={{display:"flex",alignItems:"center",gap:"6px"}}>
-                  <span style={{width:"8px",height:"8px",background:"#F5C400"}}></span>
-                  MELHOR DIA
-                </span>
-              </div>
-              <div style={{display:"flex",alignItems:"flex-end",gap:"4px",height:"88px"}}>
-                {v.chartBars.map((b: any, _i8: number) => (
-                  <Fragment key={_i8}>
-                    <div style={{flex:"1",height:b.h,background:b.c,borderRadius:"1px",transition:"height .6s cubic-bezier(.2,.8,.2,1)"}}></div>
-                  </Fragment>
-                ))}
-              </div>
-            </div>
+            <PlatformBars key={v.plat.id} id={v.plat.id} label={v.plat.chartLabel} chart={v.plat.chart} />
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:"10px"}}>
             {v.platMetrics.map((m: any, _i6: number) => (
               <Fragment key={_i6}>
-                <div className="card hover-ring-muted-lift" style={{padding:"20px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s,transform .25s"}}>
+                <div className="spot card hover-ring-muted-lift" style={{padding:"20px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s,transform .25s"}}>
                   <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"8px"}}>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                       {m.period}
@@ -139,7 +125,7 @@ export function Audience({ v }: { v: V }) {
                     )}
                   </div>
                   <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(40px,4cqw,56px)",lineHeight:".9"}}>
-                    {m.v}
+                    <CountUp value={m.v} />
                   </span>
                   <span style={{fontSize:"15px",fontWeight:"500",lineHeight:"1.3"}}>
                     {m.label}
@@ -163,7 +149,7 @@ export function Audience({ v }: { v: V }) {
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,260px),1fr))",gap:"10px"}}>
           {v.ttBreakdowns.map((b: any, _i5: number) => (
             <Fragment key={_i5}>
-              <div className="card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
+              <div className="spot card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
                 <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                   {b.title}
                 </span>
@@ -179,7 +165,7 @@ export function Audience({ v }: { v: V }) {
                         </span>
                       </div>
                       <div style={{height:"4px",background:"var(--color-neutral-800)"}}>
-                        <div style={{height:"100%",width:r.w,background:r.c}}></div>
+                        <FillBar w={r.w} c={r.c} />
                       </div>
                     </div>
                   </Fragment>

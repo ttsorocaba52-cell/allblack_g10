@@ -230,3 +230,13 @@ a:hover { color: var(--color-accent-300); }
 .hover-ring-lift:hover { box-shadow: 0 0 0 1px #F5C400 !important; transform: translateY(-3px) !important; }
 .hover-bg:hover { background: var(--color-bg) !important; }
 .hover-price:hover { transform: translateY(-6px) !important; border-color: #F5C400 !important; box-shadow: 0 0 0 1px #F5C400, 0 24px 60px rgba(0,0,0,.6) !important; }
+
+/* — spotlight: brilho que segue o mouse nos cards de métricas (posição em --mx/--my, ver MediaKit.tsx) — */
+.spot { position: relative; isolation: isolate; }
+.spot::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; pointer-events: none;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(245,196,0,.11), transparent 65%);
+  opacity: 0; transition: opacity .35s;
+}
+.spot:hover::before { opacity: 1; }
+@media (hover: none) { .spot::before { display: none; } }
