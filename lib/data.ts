@@ -176,7 +176,7 @@ export const DATA = {
   partners: [
     ['Red Bull', '@redbullbr', 'redbull'], ['Faaftech', '@faaftech', 'faaftech'], ['Postos Petrobras', '@postospetrobras', 'petrobras'], ['PneuStore', '@pneustore', 'pneustore'],
     ['DDPAI', '@ddpai.brasil', 'ddpai'], ['Vonixx', '@vonixx', 'vonixx'], ['VivaVideo', '@vivavideoapp', 'vivavideo'], ['Lubrax', '@lubrax', 'lubrax'],
-    ['K&N Filtros', '@filtrosknbrasil', 'kn'], ['Olla', '@ollaoficial', 'olla'], ['Polli\'s Racing', '@pollis.racing', 'pollis'], ['Bärenwald', '@barenwald_brasil', 'barenwald']
+    ['K&N Filtros', '@filtrosknbrasil', 'kn'], ['Olla', '@ollaoficial', 'olla']
   ],
   pdfPages: ['Capa', 'Criador', 'Audiência', 'Marcas & campanhas', 'Projetos', 'Formatos']
 };

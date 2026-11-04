@@ -259,7 +259,7 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
       };
     }),
     igKpiCols: "repeat(" + (W < 640 ? 2 : 3) + ",minmax(0,1fr))",
-    partnerCols: "repeat(" + (W < 640 ? 2 : W < 1100 ? 4 : 6) + ",minmax(0,1fr))",
+    partnerCols: "repeat(" + (W < 640 ? 2 : 5) + ",minmax(0,1fr))",
     partners: D.partners.map(([name, handle, k]: [string, string, string]) => ({ name, handle, logoBg: "url(/assets/logos/" + k + ".png)" })),
     ytKpis: D.yt.kpis,
     ytMonths: D.yt.daily.map((val: number, i: number, a: number[]) => {
