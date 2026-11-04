@@ -20,6 +20,7 @@ export function MediaKit(props: MediaKitOptions) {
     <>
       <div
         ref={v.siteRef}
+        className="site"
         style={{ containerType: "inline-size", background: "var(--color-bg)", color: "var(--color-text)", fontFamily: "var(--font-body)", overflowX: "clip" }}
       >
         <Nav v={v} />

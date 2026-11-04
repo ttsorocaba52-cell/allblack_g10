@@ -11,7 +11,7 @@ export function Contact({ v }: { v: V }) {
           <div role="img" aria-label="João Pedro no Civic G10 preto fosco, em garagem com luzes hexagonais" style={{position:"absolute",inset:"0",backgroundImage:"url(/assets/contato-joao-web.jpg)",backgroundSize:"cover",backgroundPosition:"right 42%"}}></div>
         </div>
         <div style={{position:"absolute",inset:"0",pointerEvents:"none",background:"linear-gradient(to top,#090909 10%,rgba(9,9,9,.6) 55%,rgba(9,9,9,.25))"}}></div>
-        <div style={{position:"relative",zIndex:"2",pointerEvents:"none",width:"100%",padding:"120px clamp(20px,5cqw,72px) 40px",display:"flex",flexDirection:"column",gap:"28px"}}>
+        <div style={{position:"relative",zIndex:"2",pointerEvents:"none",width:"100%",padding:"120px var(--gutter) 40px",display:"flex",flexDirection:"column",gap:"28px"}}>
           <div data-reveal="0" style={{display:"flex",alignItems:"center",gap:"12px",fontFamily:"var(--font-mono)",fontSize:"12px",letterSpacing:".14em",color:"var(--color-neutral-400)"}}>
             <span style={{display:"inline-block",padding:"2px 8px",background:"#F5C400",color:"#090909",transform:"skewX(-12deg)",fontWeight:"500"}}>
               08

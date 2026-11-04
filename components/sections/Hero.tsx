@@ -12,7 +12,7 @@ export function Hero({ v }: { v: V }) {
         <div style={{position:"absolute",inset:"0",background:"radial-gradient(ellipse 70% 60% at 70% 45%,#1c1c1c,#090909 75%)"}}>
           <img src="/assets/hero-banner.png" alt="João Pedro com o Civic G10 preto" style={{position:"absolute",inset:"0",width:"100%",height:"100%",objectFit:"cover",objectPosition:"right center"}} />
         </div>
-        <div style={{position:"absolute",inset:"0",pointerEvents:"none",background:"linear-gradient(to top,#090909 2%,rgba(9,9,9,.35) 22%,rgba(9,9,9,0) 45%),linear-gradient(to right,rgba(9,9,9,.55) 0%,rgba(9,9,9,0) 45%)"}}></div>
+        <div className="hero-shade" style={{position:"absolute",inset:"0",pointerEvents:"none",background:"linear-gradient(to top,#090909 2%,rgba(9,9,9,.35) 22%,rgba(9,9,9,0) 45%),linear-gradient(to right,rgba(9,9,9,.55) 0%,rgba(9,9,9,0) 45%)"}}></div>
         <div style={{position:"absolute",inset:"0",pointerEvents:"none",backgroundImage:"linear-gradient(to right,rgba(242,240,235,.04) 1px,transparent 1px)",backgroundSize:"calc(100%/12) 100%"}}></div>
         <div aria-hidden="true" style={{position:"absolute",right:"clamp(14px,2.4cqw,36px)",top:"120px",zIndex:"2",pointerEvents:"none",display:"flex",flexDirection:"column",alignItems:"center",gap:"14px"}}>
           <span style={{width:"1px",height:"90px",background:"#F5C400"}}></span>
@@ -22,7 +22,7 @@ export function Hero({ v }: { v: V }) {
         </div>
         <div style={{position:"absolute",left:"0",right:"0",top:"0",height:v.barH,background:"#050505",zIndex:"5",pointerEvents:"none",transition:"height 1.4s cubic-bezier(.7,0,.2,1)"}}></div>
         <div style={{position:"absolute",left:"0",right:"0",bottom:"0",height:v.barH,background:"#050505",zIndex:"5",pointerEvents:"none",transition:"height 1.4s cubic-bezier(.7,0,.2,1)"}}></div>
-        <div style={{position:"relative",zIndex:"2",pointerEvents:"none",padding:"110px clamp(20px,5cqw,72px) 0",display:"flex",flexDirection:"column",gap:"clamp(24px,3cqw,40px)"}}>
+        <div style={{position:"relative",zIndex:"2",pointerEvents:"none",padding:"110px var(--gutter) 0",display:"flex",flexDirection:"column",gap:"clamp(24px,3cqw,40px)"}}>
           <div data-reveal="100" style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between",gap:"12px",fontFamily:"var(--font-mono)",fontSize:"11px",letterSpacing:".16em",color:"var(--color-neutral-400)",textTransform:"uppercase"}}>
             <span style={{display:"flex",alignItems:"center",gap:"10px"}}>
               <span style={{width:"7px",height:"7px",borderRadius:"50%",background:"var(--color-accent)",animation:"ab-pulse 1.6s infinite"}}></span>

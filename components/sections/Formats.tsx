@@ -6,7 +6,7 @@ export function Formats({ v }: { v: V }) {
   return (
     <>
       {/* 07 FORMATOS */}
-      <section id="formatos" data-section="formatos" style={{padding:"clamp(72px,10cqw,150px) clamp(20px,5cqw,72px)",background:"var(--color-surface)"}}>
+      <section id="formatos" data-section="formatos" style={{padding:"clamp(72px,10cqw,150px) var(--gutter)",background:"var(--color-surface)"}}>
         <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between",alignItems:"flex-end",gap:"24px",marginBottom:"clamp(32px,5cqw,64px)"}}>
           <div style={{display:"flex",flexDirection:"column",gap:"16px"}}>
             <div data-reveal="0" style={{display:"flex",alignItems:"center",gap:"12px",fontFamily:"var(--font-mono)",fontSize:"12px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>

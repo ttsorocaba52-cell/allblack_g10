@@ -6,7 +6,7 @@ export function About({ v }: { v: V }) {
   return (
     <>
       {/* 02 SOBRE */}
-      <section id="sobre" data-section="sobre" style={{padding:"clamp(72px,10cqw,150px) clamp(20px,5cqw,72px)",background:"linear-gradient(to right,transparent,var(--color-divider) 48px,var(--color-divider) calc(100% - 48px),transparent) top/100% 1px no-repeat"}}>
+      <section id="sobre" data-section="sobre" style={{padding:"clamp(72px,10cqw,150px) var(--gutter)",background:"linear-gradient(to right,transparent,var(--color-divider) 48px,var(--color-divider) calc(100% - 48px),transparent) top/100% 1px no-repeat"}}>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,340px),1fr))",gap:"clamp(32px,6cqw,96px)",alignItems:"center"}}>
           <div data-reveal="0" style={{position:"relative"}}>
             <div style={{position:"relative",aspectRatio:"4/5",background:"linear-gradient(160deg,#1a1a1a,#0d0d0d)"}}>

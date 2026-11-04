@@ -251,3 +251,51 @@ a:hover { color: var(--color-accent-300); }
 ::view-transition-new(case-featured-info) { animation: vt-fade-up .55s cubic-bezier(.2,.8,.2,1) .3s both; }
 @keyframes vt-fade-out { to { opacity: 0; transform: translateY(-10px); } }
 @keyframes vt-fade-up { from { opacity: 0; transform: translateY(14px); } }
+
+/* ══ Responsivo ══════════════════════════════════════════════════════════
+   O wrapper .site é um container (container-type: inline-size), então as
+   regras abaixo usam @container com a largura real do site. */
+
+/* Margem lateral: cresce com a tela e, acima de ~1800px, centraliza o conteúdo em 1680px */
+.site { --gutter: max(clamp(20px, 5cqw, 72px), calc((100cqw - 1680px) / 2)); }
+
+/* Cases: 4 colunas no desktop, 2 no tablet, carrossel no celular */
+@container (max-width: 900px) {
+  .case-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+@container (max-width: 600px) {
+  .case-grid {
+    display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter);
+  }
+  .case-grid::-webkit-scrollbar { display: none; }
+  .case-card { flex: 0 0 72% !important; scroll-snap-align: start; }
+  .case-card:hover { transform: none !important; }
+}
+
+/* Case em destaque: no celular a imagem ocupa a largura toda, mais baixa */
+@container (max-width: 600px) {
+  .feat-media { flex: 1 1 100% !important; aspect-ratio: 4 / 5 !important; }
+  .feat-stat { font-size: 30px !important; gap: 5px !important; }
+  .feat-stat i { font-size: 15px !important; }
+}
+
+/* Rótulos pequenos de estatística não se encostam em colunas estreitas */
+@container (max-width: 480px) {
+  .stat-label { font-size: 8px !important; letter-spacing: .04em !important; }
+  .tab-state { display: none; }
+}
+
+/* Hero: no tablet/celular o texto fica sobre a foto, então escurece mais */
+@container (max-width: 900px) {
+  .hero-shade {
+    background:
+      linear-gradient(to top, #090909 8%, rgba(9,9,9,.55) 45%, rgba(9,9,9,.35) 75%, rgba(9,9,9,.5)) !important;
+  }
+}
+
+/* Toque: sem "pulos" de hover presos em telas sensíveis ao toque */
+@media (hover: none) {
+  .hover-lift:hover, .hover-tab:hover, .hover-ring-muted-lift:hover, .hover-ring-muted-lift-3:hover,
+  .hover-ring-lift:hover, .hover-price:hover { transform: none !important; }
+}

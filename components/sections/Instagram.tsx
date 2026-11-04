@@ -8,7 +8,7 @@ export function Instagram({ v }: { v: V }) {
   return (
     <>
       {/* 02 INSTAGRAM */}
-      <section id="instagram" data-section="instagram" style={{position:"relative",padding:"clamp(72px,10cqw,150px) clamp(20px,5cqw,72px)",overflow:"hidden"}}>
+      <section id="instagram" data-section="instagram" style={{position:"relative",padding:"clamp(72px,10cqw,150px) var(--gutter)",overflow:"hidden"}}>
         <div aria-hidden="true" style={{position:"absolute",right:"-2cqw",top:"clamp(40px,6cqw,90px)",fontFamily:"var(--font-display)",fontSize:"clamp(200px,34cqw,560px)",lineHeight:".8",color:"transparent",WebkitTextStroke:"1px rgba(245,196,0,.16)",pointerEvents:"none",letterSpacing:"-.02em"}}>
           989K
         </div>

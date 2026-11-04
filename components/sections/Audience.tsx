@@ -9,7 +9,7 @@ export function Audience({ v }: { v: V }) {
   return (
     <>
       {/* 04 TIKTOK & FACEBOOK */}
-      <section id="audiencia" data-section="audiencia" style={{padding:"clamp(72px,10cqw,150px) clamp(20px,5cqw,72px)"}}>
+      <section id="audiencia" data-section="audiencia" style={{padding:"clamp(72px,10cqw,150px) var(--gutter)"}}>
         <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between",alignItems:"flex-end",gap:"24px",marginBottom:"clamp(32px,5cqw,64px)"}}>
           <div style={{display:"flex",flexDirection:"column",gap:"16px"}}>
             <div data-reveal="0" style={{display:"flex",alignItems:"center",gap:"12px",fontFamily:"var(--font-mono)",fontSize:"12px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
@@ -65,7 +65,7 @@ export function Audience({ v }: { v: V }) {
                     <i className={`ph ${p.icon}`} style={{fontSize:"20px",color:p.iconColor}}></i>
                     {p.name}
                   </span>
-                  <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".12em",color:p.stateColor}}>
+                  <span className="tab-state" style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".12em",color:p.stateColor}}>
                     {p.state}
                   </span>
                 </span>
@@ -112,7 +112,7 @@ export function Audience({ v }: { v: V }) {
             {v.platMetrics.map((m: any, _i6: number) => (
               <Fragment key={_i6}>
                 <div className="card hover-ring-muted-lift" style={{padding:"20px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s,transform .25s"}}>
-                  <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"8px"}}>
+                  <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between",alignItems:"center",gap:"6px 8px"}}>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                       {m.period}
                     </span>

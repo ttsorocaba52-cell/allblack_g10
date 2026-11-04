@@ -8,7 +8,7 @@ export function Projects({ v }: { v: V }) {
   return (
     <>
       {/* 06 PROJETOS */}
-      <section id="projetos" data-section="projetos" style={{padding:"clamp(72px,10cqw,150px) clamp(20px,5cqw,72px)"}}>
+      <section id="projetos" data-section="projetos" style={{padding:"clamp(72px,10cqw,150px) var(--gutter)"}}>
         <div style={{display:"flex",flexDirection:"column",gap:"16px",marginBottom:"clamp(32px,5cqw,64px)"}}>
           <div data-reveal="0" style={{display:"flex",alignItems:"center",gap:"12px",fontFamily:"var(--font-mono)",fontSize:"12px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
             <span style={{display:"inline-block",padding:"2px 8px",background:"#F5C400",color:"#090909",transform:"skewX(-12deg)",fontWeight:"500"}}>
@@ -76,7 +76,7 @@ export function Projects({ v }: { v: V }) {
                                 <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(34px,3.4cqw,48px)",lineHeight:".95"}}>
                                   <CountUp value={st.v} />
                                 </span>
-                                <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
+                                <span className="stat-label" style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                                   {st.l}
                                 </span>
                               </div>
