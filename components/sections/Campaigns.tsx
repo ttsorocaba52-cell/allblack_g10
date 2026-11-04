@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
-import { Slot } from "../Slot";
+import { CaseShowcase } from "../interactive/CaseShowcase";
 
 export function Campaigns({ v }: { v: V }) {
   return (
@@ -49,124 +49,7 @@ export function Campaigns({ v }: { v: V }) {
             RESULTADOS A PREENCHER COM DADOS REAIS
           </span>
         </div>
-        <div ref={v.featuredRef} className="hover-ring" data-reveal="0" onClick={v.featuredCase.open} style={{cursor:"pointer",display:"flex",flexWrap:"wrap",borderRadius:"var(--radius-lg)",overflow:"hidden",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .3s",scrollMarginTop:"88px"}}>
-          <div className="feat-media" style={{position:"relative",flex:"0 0 clamp(240px,38%,380px)",aspectRatio:"9/16",background:"linear-gradient(160deg,#1c1c1c,#0b0b0b)",viewTransitionName:`case-${v.featuredCase.slug}`}}>
-            <div role="img" aria-label={`Reel da campanha ${v.featuredCase.brand}`} style={{position:"absolute",inset:"0",backgroundImage:`url(${v.featuredCase.photo})`,backgroundSize:"cover",backgroundPosition:"center"}}></div>
-            <div style={{position:"absolute",left:"16px",top:"16px",pointerEvents:"none"}}>
-              <span className="tag tag-accent" style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em"}}>
-                CASE EM DESTAQUE
-              </span>
-            </div>
-            <div style={{position:"absolute",right:"16px",bottom:"16px",width:"56px",height:"56px",borderRadius:"50%",border:"1px solid var(--color-text)",display:"grid",placeItems:"center",pointerEvents:"none",background:"rgba(9,9,9,.5)"}}>
-              <i className="ph-fill ph-play" style={{fontSize:"20px"}}></i>
-            </div>
-          </div>
-          <div className="feat-info" style={{flex:"1 1 300px",minWidth:"0",padding:"clamp(22px,3cqw,40px)",display:"flex",flexDirection:"column",gap:"18px",viewTransitionName:"case-featured-info"}}>
-            <span style={{fontFamily:"var(--font-mono)",fontSize:"11px",letterSpacing:".14em",color:"var(--color-accent-400)"}}>
-              {v.featuredCase.kicker}
-            </span>
-            <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(40px,4.6cqw,68px)",lineHeight:".9"}}>
-              CAMPANHA
-              <br />
-              {v.featuredCase.brand.toUpperCase()}
-            </span>
-            <p style={{margin:"0",maxWidth:"560px",fontSize:"15px",lineHeight:"1.65",color:"var(--color-neutral-300)",textWrap:"pretty"}}>
-              {v.featuredCase.desc}
-            </p>
-            <div style={{display:"flex",flexWrap:"wrap",gap:"6px"}}>
-              {v.featuredCase.tags.map((t: string) => (
-                <span key={t} className="tag tag-neutral" style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".1em"}}>
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div style={{marginTop:"auto",display:"flex",flexDirection:"column",gap:"14px"}}>
-              <div style={{display:"flex",flexDirection:"column",gap:"4px",paddingTop:"18px",borderTop:"2px solid #F5C400"}}>
-                <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
-                  VISUALIZAÇÕES
-                </span>
-                <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(80px,9cqw,140px)",lineHeight:".85"}}>
-                  {v.featuredCase.views}
-                </span>
-              </div>
-              <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",borderTop:"1px solid var(--color-divider)"}}>
-                {v.featuredCase.stats.map((st: any) => (
-                  <div key={st.b} style={{padding:"14px 10px 0 0",display:"flex",flexDirection:"column",gap:"4px"}}>
-                    <span className="feat-stat" style={{display:"flex",alignItems:"center",gap:"8px",fontFamily:"var(--font-display)",fontSize:"clamp(34px,3.4cqw,48px)",lineHeight:"1"}}>
-                      <i className={`ph ${st.icon}`} style={{fontSize:"20px",color:"var(--color-accent)"}}></i>
-                      {st.a}
-                    </span>
-                    <span className="stat-label" style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".12em",color:"var(--color-neutral-500)"}}>
-                      {st.b}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".12em",color:"var(--color-neutral-600)"}}>
-                FONTE: INSTAGRAM · REEL PUBLICADO
-              </span>
-            </div>
-            <span style={{display:"flex",alignItems:"center",gap:"8px",fontFamily:"var(--font-mono)",fontSize:"11px",letterSpacing:".14em",color:"var(--color-text)"}}>
-              ABRIR CASE{" "}
-              <i className="ph ph-arrow-right" style={{color:"var(--color-accent)"}}></i>
-            </span>
-          </div>
-        </div>
-        <div className="case-grid" style={{display:"grid",gridTemplateColumns:"repeat(4,minmax(0,1fr))",gap:"10px",marginTop:"10px"}}>
-          {v.cases.map((c: any) => (
-              <button key={c.brand} className="case-card hover-ring-muted-lift-3" onClick={c.open} aria-label={`Colocar o case ${c.brand} em destaque`} style={{all:"unset",boxSizing:"border-box",cursor:"pointer",display:"flex",flexDirection:"column",borderRadius:"var(--radius-md)",overflow:"hidden",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .3s,transform .3s",viewTransitionName:`card-${c.slug}`}}>
-                <div style={{position:"relative",aspectRatio:"9/16",background:"linear-gradient(160deg,#1a1a1a,#0b0b0b)",viewTransitionName:`case-${c.slug}`}}>
-                  {c.hasPhoto && (
-                    <>
-                      <div role="img" aria-label={`Reel da campanha ${c.brand}`} style={{position:"absolute",inset:"0",backgroundImage:c.photoBg,backgroundSize:"cover",backgroundPosition:"center"}}></div>
-                    </>
-                  )}
-                  {c.noPhoto && (
-                    <>
-                      <Slot placeholder={"Reel da campanha · 9:16"} />
-                    </>
-                  )}
-                  <div style={{position:"absolute",right:"10px",top:"10px",pointerEvents:"none",display:"flex",alignItems:"center",gap:"6px",padding:"4px 8px",borderRadius:"4px",background:"rgba(9,9,9,.6)",fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".12em",color:"var(--color-text)"}}>
-                    <i className="ph ph-film-reel" style={{fontSize:"12px",color:"var(--color-accent)"}}></i>
-                    REEL
-                  </div>
-                </div>
-                <div style={{padding:"16px",display:"flex",flexDirection:"column",gap:"6px"}}>
-                  <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
-                    {c.n} · {c.format}
-                  </span>
-                  <span style={{fontFamily:"var(--font-display)",fontSize:"30px",lineHeight:"1"}}>
-                    {c.brand}
-                  </span>
-                  {c.hasStats && (
-                    <>
-                      <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:"10px 12px",marginTop:"6px",paddingTop:"12px",borderTop:"1px solid var(--color-divider)"}}>
-                        {c.stats.map((st: any, _i12: number) => (
-                          <Fragment key={_i12}>
-                            <div style={{display:"flex",flexDirection:"column",gap:"2px"}}>
-                              <span style={{fontFamily:"var(--font-display)",fontSize:"28px",lineHeight:"1"}}>
-                                {st.a}
-                              </span>
-                              <span className="stat-label" style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".12em",color:"var(--color-neutral-500)"}}>
-                                {st.b}
-                              </span>
-                            </div>
-                          </Fragment>
-                        ))}
-                      </div>
-                    </>
-                  )}
-                  {c.noStats && (
-                    <>
-                      <span style={{fontSize:"12px",color:"var(--color-neutral-500)"}}>
-                        Métricas aguardando dados oficiais
-                      </span>
-                    </>
-                  )}
-                </div>
-              </button>
-          ))}
-        </div>
+        <CaseShowcase onOpen={v.openCase} />
       </section>
     </>
   );
