@@ -368,3 +368,13 @@ a:hover { color: var(--color-accent-300); }
     border: 0; font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; padding: 8px 12px; min-height: 36px;
   }
 }
+
+/* Stories: lado a lado só em telas largas, com os 3 frames esticando até a altura
+   do gráfico + cards (topo e base alinhados). Abaixo disso, empilha. */
+@container (min-width: 1200px) {
+  .stories-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) !important; }
+  .story-frame { aspect-ratio: auto !important; flex: 1 1 auto; min-height: 320px; }
+}
+@container (max-width: 1199px) {
+  .stories-grid { grid-template-columns: minmax(0, 1fr) !important; }
+}

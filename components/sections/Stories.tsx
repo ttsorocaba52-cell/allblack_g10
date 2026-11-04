@@ -33,12 +33,12 @@ export function Stories({ v }: { v: V }) {
             </p>
           </div>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,380px),1fr))",gap:"clamp(20px,3cqw,40px)",alignItems:"stretch"}}>
+        <div className="stories-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,380px),1fr))",gap:"clamp(20px,3cqw,40px)",alignItems:"stretch"}}>
           <div data-reveal="100" style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",gap:"10px"}}>
             {v.storyFrames.map((f: any, _i6: number) => (
               <Fragment key={_i6}>
                 <div style={{display:"flex",flexDirection:"column",gap:"10px"}}>
-                  <div className="hover-lift" style={{position:"relative",aspectRatio:"9/16",borderRadius:"14px",overflow:"hidden",background:"linear-gradient(170deg,#1c1c1c,#0c0c0c)",boxShadow:"var(--shadow-md)",transition:"transform .35s"}}>
+                  <div className="story-frame hover-lift" style={{position:"relative",aspectRatio:"9/16",borderRadius:"14px",overflow:"hidden",background:"linear-gradient(170deg,#1c1c1c,#0c0c0c)",boxShadow:"var(--shadow-md)",transition:"transform .35s"}}>
                     <div role="img" aria-label={f.label} style={{position:"absolute",inset:"0",backgroundImage:f.bg,backgroundSize:"cover",backgroundPosition:f.pos}}></div>
                     <div style={{position:"absolute",top:"8px",left:"8px",right:"8px",display:"flex",gap:"3px",pointerEvents:"none"}}>
                       {f.segs.map((sg: any, _i11: number) => (
