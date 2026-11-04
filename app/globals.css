@@ -286,12 +286,25 @@ a:hover { color: var(--color-accent-300); }
   .tab-state { display: none; }
 }
 
-/* Hero: no tablet/celular o texto fica sobre a foto, então escurece mais */
-@container (max-width: 900px) {
+/* Hero no tablet: o texto fica sobre a foto, então escurece mais */
+@container (min-width: 768px) and (max-width: 900px) {
   .hero-shade {
     background:
       linear-gradient(to top, #090909 8%, rgba(9,9,9,.55) 45%, rgba(9,9,9,.35) 75%, rgba(9,9,9,.5)) !important;
   }
+}
+
+/* Hero no celular: banner vertical (hero-mobile.webp) em cima, texto embaixo sobre o chão escuro da foto */
+@media (max-width: 767px) {
+  #top { min-height: 0 !important; }
+  .hero-bg { position: relative !important; inset: auto !important; aspect-ratio: 1080 / 1500; flex: none; }
+  .hero-bg::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to top, #090909 4%, rgba(9,9,9,.85) 16%, rgba(9,9,9,0) 42%);
+  }
+  .hero-img { object-position: center 72% !important; }
+  .hero-shade, .hero-est { display: none !important; }
+  .hero-content { margin-top: -30vw; padding-top: 0 !important; }
 }
 
 /* Toque: sem "pulos" de hover presos em telas sensíveis ao toque */
