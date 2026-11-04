@@ -111,7 +111,7 @@ export function Audience({ v }: { v: V }) {
           <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:"10px"}}>
             {v.platMetrics.map((m: any, _i6: number) => (
               <Fragment key={_i6}>
-                <div className="spot card hover-ring-muted-lift" style={{padding:"20px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s,transform .25s"}}>
+                <div className="card hover-ring-muted-lift" style={{padding:"20px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s,transform .25s"}}>
                   <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:"8px"}}>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                       {m.period}
@@ -149,18 +149,18 @@ export function Audience({ v }: { v: V }) {
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,260px),1fr))",gap:"10px"}}>
           {v.ttBreakdowns.map((b: any, _i5: number) => (
             <Fragment key={_i5}>
-              <div className="spot card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
+              <div className="card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
                 <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                   {b.title}
                 </span>
                 {b.rows.map((r: any, _i8: number) => (
                   <Fragment key={_i8}>
-                    <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
+                    <div className="metric-row" style={{display:"flex",flexDirection:"column",gap:"6px"}}>
                       <div style={{display:"flex",justifyContent:"space-between",gap:"12px",fontSize:"13px"}}>
-                        <span style={{color:"var(--color-neutral-300)",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
+                        <span className="metric-key" style={{color:"var(--color-neutral-300)",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
                           {r.k}
                         </span>
-                        <span style={{fontFamily:"var(--font-mono)",fontSize:"12px"}}>
+                        <span className="metric-val" style={{fontFamily:"var(--font-mono)",fontSize:"12px"}}>
                           {r.v}
                         </span>
                       </div>

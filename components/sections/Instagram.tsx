@@ -93,7 +93,7 @@ export function Instagram({ v }: { v: V }) {
             <div style={{display:"grid",gridTemplateColumns:v.igKpiCols,gap:"10px"}}>
               {v.igKpis.map((k: any, _i7: number) => (
                 <Fragment key={_i7}>
-                  <div className="spot card hover-ring" style={{padding:"16px",gap:"6px",background:"var(--color-surface)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s"}}>
+                  <div className="card hover-ring" style={{padding:"16px",gap:"6px",background:"var(--color-surface)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s"}}>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".14em",color:"var(--color-accent-400)"}}>
                       {k.p}
                     </span>
@@ -120,18 +120,18 @@ export function Instagram({ v }: { v: V }) {
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,260px),1fr))",gap:"10px"}}>
           {v.igBreakdowns.map((b: any, _i5: number) => (
             <Fragment key={_i5}>
-              <div className="spot card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
+              <div className="card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
                 <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                   {b.title}
                 </span>
                 {b.rows.map((r: any, _i8: number) => (
                   <Fragment key={_i8}>
-                    <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
+                    <div className="metric-row" style={{display:"flex",flexDirection:"column",gap:"6px"}}>
                       <div style={{display:"flex",justifyContent:"space-between",fontSize:"13px"}}>
-                        <span style={{color:"var(--color-neutral-300)"}}>
+                        <span className="metric-key" style={{color:"var(--color-neutral-300)"}}>
                           {r.k}
                         </span>
-                        <span style={{fontFamily:"var(--font-mono)",fontSize:"12px"}}>
+                        <span className="metric-val" style={{fontFamily:"var(--font-mono)",fontSize:"12px"}}>
                           {r.v}
                         </span>
                       </div>
@@ -157,7 +157,7 @@ export function Instagram({ v }: { v: V }) {
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,300px),1fr))",gap:"0 32px"}}>
             {v.igReels.map((t: any, _i6: number) => (
               <Fragment key={_i6}>
-                <div style={{display:"grid",gridTemplateColumns:"28px minmax(0,1fr) auto",gap:"14px",alignItems:"center",padding:"12px 0",borderBottom:"1px solid var(--color-divider)"}}>
+                <div className="metric-row" style={{display:"grid",gridTemplateColumns:"28px minmax(0,1fr) auto",gap:"14px",alignItems:"center",padding:"12px 0",borderBottom:"1px solid var(--color-divider)"}}>
                   <span style={{fontFamily:"var(--font-display)",fontSize:"28px",lineHeight:"1",color:t.nc}}>
                     {t.n}
                   </span>
@@ -170,7 +170,7 @@ export function Instagram({ v }: { v: V }) {
                     </div>
                   </div>
                   <span style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"2px"}}>
-                    <span style={{fontFamily:"var(--font-display)",fontSize:"28px",lineHeight:"1"}}>
+                    <span className="metric-val metric-val-lg" style={{fontFamily:"var(--font-display)",fontSize:"28px",lineHeight:"1"}}>
                       <CountUp value={t.v} />
                     </span>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",color:"var(--color-neutral-500)"}}>

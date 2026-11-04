@@ -79,7 +79,7 @@ export function Stories({ v }: { v: V }) {
             <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:"10px"}}>
               {v.storyCards.map((c: any, _i7: number) => (
                 <Fragment key={_i7}>
-                  <div className="spot card hover-ring" data-reveal="200" style={{padding:"16px",gap:"8px",background:"var(--color-surface)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s"}}>
+                  <div className="card hover-ring" data-reveal="200" style={{padding:"16px",gap:"8px",background:"var(--color-surface)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .25s"}}>
                     <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".14em",color:c.srcColor}}>
                       {c.src}
                     </span>

@@ -231,15 +231,14 @@ a:hover { color: var(--color-accent-300); }
 .hover-bg:hover { background: var(--color-bg) !important; }
 .hover-price:hover { transform: translateY(-6px) !important; border-color: #F5C400 !important; box-shadow: 0 0 0 1px #F5C400, 0 24px 60px rgba(0,0,0,.6) !important; }
 
-/* — spotlight: brilho que segue o mouse nos cards de métricas (posição em --mx/--my, ver MediaKit.tsx) — */
-.spot { position: relative; isolation: isolate; }
-.spot::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; pointer-events: none;
-  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(245,196,0,.11), transparent 65%);
-  opacity: 0; transition: opacity .35s;
-}
-.spot:hover::before { opacity: 1; }
-@media (hover: none) { .spot::before { display: none; } }
+/* — linhas de métricas: a linha sob o cursor ganha destaque, as outras apagam — */
+.metric-row { transition: opacity .25s; }
+:has(> .metric-row:hover) > .metric-row:not(:hover) { opacity: .4; }
+.metric-row .metric-val { display: inline-block; transform-origin: right center; transition: transform .25s cubic-bezier(.2,.8,.2,1), color .25s; }
+.metric-row:hover .metric-val { color: var(--color-accent); transform: scale(1.3); }
+.metric-row:hover .metric-val-lg { transform: scale(1.12); }
+.metric-row:hover .metric-key { color: var(--color-text) !important; }
+.metric-row:hover .fill-bar { background: #F5C400 !important; box-shadow: 0 0 12px rgba(245,196,0,.45); }
 
 /* — faixa amarela em loop (components/interactive/Ticker.tsx) — */
 @keyframes ab-marquee { to { transform: translateX(calc(-100% / 3)); } }

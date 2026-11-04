@@ -111,7 +111,7 @@ export function YouTube({ v }: { v: V }) {
             </span>
             {v.ytTop.map((t: any, _i6: number) => (
               <Fragment key={_i6}>
-                <div style={{display:"grid",gridTemplateColumns:"28px minmax(0,1fr) auto",gap:"14px",alignItems:"center",padding:"10px 0",borderBottom:"1px solid var(--color-divider)"}}>
+                <div className="metric-row" style={{display:"grid",gridTemplateColumns:"28px minmax(0,1fr) auto",gap:"14px",alignItems:"center",padding:"10px 0",borderBottom:"1px solid var(--color-divider)"}}>
                   <span style={{fontFamily:"var(--font-display)",fontSize:"28px",lineHeight:"1",color:t.nc}}>
                     {t.n}
                   </span>
@@ -123,7 +123,7 @@ export function YouTube({ v }: { v: V }) {
                       <FillBar w={t.w} c={"var(--color-accent)"} />
                     </div>
                   </div>
-                  <span style={{fontFamily:"var(--font-display)",fontSize:"26px",lineHeight:"1"}}>
+                  <span className="metric-val metric-val-lg" style={{fontFamily:"var(--font-display)",fontSize:"26px",lineHeight:"1"}}>
                     <CountUp value={t.v} />
                   </span>
                 </div>
@@ -134,18 +134,18 @@ export function YouTube({ v }: { v: V }) {
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,260px),1fr))",gap:"10px",marginTop:"10px"}}>
           {v.ytBreakdowns.map((b: any, _i5: number) => (
             <Fragment key={_i5}>
-              <div className="spot card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
+              <div className="card" data-reveal="0" style={{padding:"22px",gap:"14px",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)"}}>
                 <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
                   {b.title}
                 </span>
                 {b.rows.map((r: any, _i8: number) => (
                   <Fragment key={_i8}>
-                    <div style={{display:"flex",flexDirection:"column",gap:"6px"}}>
+                    <div className="metric-row" style={{display:"flex",flexDirection:"column",gap:"6px"}}>
                       <div style={{display:"flex",justifyContent:"space-between",fontSize:"13px"}}>
-                        <span style={{color:"var(--color-neutral-300)"}}>
+                        <span className="metric-key" style={{color:"var(--color-neutral-300)"}}>
                           {r.k}
                         </span>
-                        <span style={{fontFamily:"var(--font-mono)",fontSize:"12px"}}>
+                        <span className="metric-val" style={{fontFamily:"var(--font-mono)",fontSize:"12px"}}>
                           {r.v}
                         </span>
                       </div>
