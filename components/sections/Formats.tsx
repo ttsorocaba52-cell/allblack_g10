@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
-import { CountUp } from "../interactive/CountUp";
 
 export function Formats({ v }: { v: V }) {
   return (
@@ -67,7 +66,7 @@ export function Formats({ v }: { v: V }) {
                             R$
                           </span>
                           <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(64px,6cqw,88px)",lineHeight:".85"}}>
-                            <CountUp value={it.p} />
+                            {it.p}
                           </span>
                         </div>
                         <div style={{position:"relative",display:"flex",flexDirection:"column",gap:"10px",paddingTop:"16px",borderTop:"1px solid var(--color-divider)"}}>

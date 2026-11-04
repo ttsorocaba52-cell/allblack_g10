@@ -2,7 +2,6 @@
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
 import { Slot } from "../Slot";
-import { CountUp } from "../interactive/CountUp";
 
 export function Campaigns({ v }: { v: V }) {
   return (
@@ -50,9 +49,9 @@ export function Campaigns({ v }: { v: V }) {
             RESULTADOS A PREENCHER COM DADOS REAIS
           </span>
         </div>
-        <div className="hover-ring" data-reveal="0" onClick={v.featured.open} style={{cursor:"pointer",display:"flex",flexWrap:"wrap",borderRadius:"var(--radius-lg)",overflow:"hidden",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .3s"}}>
-          <div style={{position:"relative",flex:"0 0 min(100%,380px)",aspectRatio:"9/16",background:"linear-gradient(160deg,#1c1c1c,#0b0b0b)"}}>
-            <div role="img" aria-label="Reel da campanha 70mai" style={{position:"absolute",inset:"0",backgroundImage:"url(/assets/case-70mai.png)",backgroundSize:"cover",backgroundPosition:"center"}}></div>
+        <div ref={v.featuredRef} className="hover-ring" data-reveal="0" onClick={v.featuredCase.open} style={{cursor:"pointer",display:"flex",flexWrap:"wrap",borderRadius:"var(--radius-lg)",overflow:"hidden",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .3s",scrollMarginTop:"88px"}}>
+          <div style={{position:"relative",flex:"0 0 min(100%,380px)",aspectRatio:"9/16",background:"linear-gradient(160deg,#1c1c1c,#0b0b0b)",viewTransitionName:`case-${v.featuredCase.slug}`}}>
+            <div role="img" aria-label={`Reel da campanha ${v.featuredCase.brand}`} style={{position:"absolute",inset:"0",backgroundImage:`url(${v.featuredCase.photo})`,backgroundSize:"cover",backgroundPosition:"center"}}></div>
             <div style={{position:"absolute",left:"16px",top:"16px",pointerEvents:"none"}}>
               <span className="tag tag-accent" style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".14em"}}>
                 CASE EM DESTAQUE
@@ -62,28 +61,24 @@ export function Campaigns({ v }: { v: V }) {
               <i className="ph-fill ph-play" style={{fontSize:"20px"}}></i>
             </div>
           </div>
-          <div style={{flex:"1 1 360px",minWidth:"0",padding:"clamp(22px,3cqw,40px)",display:"flex",flexDirection:"column",gap:"18px"}}>
+          <div style={{flex:"1 1 360px",minWidth:"0",padding:"clamp(22px,3cqw,40px)",display:"flex",flexDirection:"column",gap:"18px",viewTransitionName:"case-featured-info"}}>
             <span style={{fontFamily:"var(--font-mono)",fontSize:"11px",letterSpacing:".14em",color:"var(--color-accent-400)"}}>
-              70MAI × ALLBLACK · REEL · INSTAGRAM
+              {v.featuredCase.kicker}
             </span>
             <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(40px,4.6cqw,68px)",lineHeight:".9"}}>
               CAMPANHA
               <br />
-              70MAI
+              {v.featuredCase.brand.toUpperCase()}
             </span>
             <p style={{margin:"0",maxWidth:"560px",fontSize:"15px",lineHeight:"1.65",color:"var(--color-neutral-300)",textWrap:"pretty"}}>
-              Publi da dashcam 70mai integrada a um reel de humor: "Quando você esquece que está com a sua namorada…". O produto aparece como parte natural da cena, com as câmeras frontal, interna e traseira gravando a situação.
+              {v.featuredCase.desc}
             </p>
             <div style={{display:"flex",flexWrap:"wrap",gap:"6px"}}>
-              <span className="tag tag-neutral" style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".1em"}}>
-                DASHCAM
-              </span>
-              <span className="tag tag-neutral" style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".1em"}}>
-                HUMOR
-              </span>
-              <span className="tag tag-neutral" style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".1em"}}>
-                PRODUTO EM USO
-              </span>
+              {v.featuredCase.tags.map((t: string) => (
+                <span key={t} className="tag tag-neutral" style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".1em"}}>
+                  {t}
+                </span>
+              ))}
             </div>
             <div style={{marginTop:"auto",display:"flex",flexDirection:"column",gap:"14px"}}>
               <div style={{display:"flex",flexDirection:"column",gap:"4px",paddingTop:"18px",borderTop:"2px solid #F5C400"}}>
@@ -91,22 +86,20 @@ export function Campaigns({ v }: { v: V }) {
                   VISUALIZAÇÕES
                 </span>
                 <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(80px,9cqw,140px)",lineHeight:".85"}}>
-                  <CountUp value={"9,1M"} />
+                  {v.featuredCase.views}
                 </span>
               </div>
               <div style={{display:"grid",gridTemplateColumns:"repeat(3,minmax(0,1fr))",borderTop:"1px solid var(--color-divider)"}}>
-                {v.featuredStats.map((st: any, _i8: number) => (
-                  <Fragment key={_i8}>
-                    <div style={{padding:"14px 10px 0 0",display:"flex",flexDirection:"column",gap:"4px"}}>
-                      <span style={{display:"flex",alignItems:"center",gap:"8px",fontFamily:"var(--font-display)",fontSize:"clamp(34px,3.4cqw,48px)",lineHeight:"1"}}>
-                        <i className={`ph ${st.icon}`} style={{fontSize:"20px",color:"var(--color-accent)"}}></i>
-                        <CountUp value={st.a} />
-                      </span>
-                      <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".12em",color:"var(--color-neutral-500)"}}>
-                        {st.b}
-                      </span>
-                    </div>
-                  </Fragment>
+                {v.featuredCase.stats.map((st: any) => (
+                  <div key={st.b} style={{padding:"14px 10px 0 0",display:"flex",flexDirection:"column",gap:"4px"}}>
+                    <span style={{display:"flex",alignItems:"center",gap:"8px",fontFamily:"var(--font-display)",fontSize:"clamp(34px,3.4cqw,48px)",lineHeight:"1"}}>
+                      <i className={`ph ${st.icon}`} style={{fontSize:"20px",color:"var(--color-accent)"}}></i>
+                      {st.a}
+                    </span>
+                    <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".12em",color:"var(--color-neutral-500)"}}>
+                      {st.b}
+                    </span>
+                  </div>
                 ))}
               </div>
               <span style={{fontFamily:"var(--font-mono)",fontSize:"10px",letterSpacing:".12em",color:"var(--color-neutral-600)"}}>
@@ -120,10 +113,9 @@ export function Campaigns({ v }: { v: V }) {
           </div>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(min(100%,220px),1fr))",gap:"10px",marginTop:"10px"}}>
-          {v.cases.map((c: any, _i5: number) => (
-            <Fragment key={_i5}>
-              <button className="hover-ring-muted-lift-3" onClick={c.open} style={{all:"unset",boxSizing:"border-box",cursor:"pointer",display:"flex",flexDirection:"column",borderRadius:"var(--radius-md)",overflow:"hidden",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .3s,transform .3s"}}>
-                <div style={{position:"relative",aspectRatio:"9/16",background:"linear-gradient(160deg,#1a1a1a,#0b0b0b)"}}>
+          {v.cases.map((c: any) => (
+              <button key={c.brand} className="hover-ring-muted-lift-3" onClick={c.open} aria-label={`Colocar o case ${c.brand} em destaque`} style={{all:"unset",boxSizing:"border-box",cursor:"pointer",display:"flex",flexDirection:"column",borderRadius:"var(--radius-md)",overflow:"hidden",background:"var(--color-bg)",boxShadow:"var(--shadow-sm)",transition:"box-shadow .3s,transform .3s",viewTransitionName:`card-${c.slug}`}}>
+                <div style={{position:"relative",aspectRatio:"9/16",background:"linear-gradient(160deg,#1a1a1a,#0b0b0b)",viewTransitionName:`case-${c.slug}`}}>
                   {c.hasPhoto && (
                     <>
                       <div role="img" aria-label={`Reel da campanha ${c.brand}`} style={{position:"absolute",inset:"0",backgroundImage:c.photoBg,backgroundSize:"cover",backgroundPosition:"center"}}></div>
@@ -153,7 +145,7 @@ export function Campaigns({ v }: { v: V }) {
                           <Fragment key={_i12}>
                             <div style={{display:"flex",flexDirection:"column",gap:"2px"}}>
                               <span style={{fontFamily:"var(--font-display)",fontSize:"28px",lineHeight:"1"}}>
-                                <CountUp value={st.a} />
+                                {st.a}
                               </span>
                               <span style={{fontFamily:"var(--font-mono)",fontSize:"9px",letterSpacing:".12em",color:"var(--color-neutral-500)"}}>
                                 {st.b}
@@ -173,7 +165,6 @@ export function Campaigns({ v }: { v: V }) {
                   )}
                 </div>
               </button>
-            </Fragment>
           ))}
         </div>
       </section>

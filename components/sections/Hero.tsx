@@ -2,6 +2,7 @@
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
 import { CountUp } from "../interactive/CountUp";
+import { Ticker } from "../interactive/Ticker";
 
 export function Hero({ v }: { v: V }) {
   return (
@@ -86,80 +87,7 @@ export function Hero({ v }: { v: V }) {
       </section>
       <div aria-hidden="true" style={{position:"relative",height:"120px",overflow:"hidden",margin:"-20px 0"}}>
         <div style={{position:"absolute",left:"-5%",right:"-5%",top:"34px",height:"46px",background:"#141414",transform:"rotate(1.6deg)",borderTop:"1px solid #2e2f31",borderBottom:"1px solid #2e2f31"}}></div>
-        <div style={{position:"absolute",left:"-5%",right:"-5%",top:"36px",height:"50px",background:"#F5C400",color:"#090909",transform:"rotate(-1.4deg)",display:"flex",alignItems:"center",gap:"28px",whiteSpace:"nowrap",paddingLeft:"40px",overflow:"hidden"}}>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            ALLBLACK
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            CIVIC G10
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            BEYOND THE ROAD
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            @ALLBLACK_G10
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            JDM CULTURE
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            COMPRA · REFORMA · REVENDA
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            ALLBLACK
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            CIVIC G10
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            BEYOND THE ROAD
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            @ALLBLACK_G10
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            JDM CULTURE
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            COMPRA · REFORMA · REVENDA
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            ALLBLACK
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            CIVIC G10
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            BEYOND THE ROAD
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            @ALLBLACK_G10
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            JDM CULTURE
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-          <span style={{display:"flex",alignItems:"center",gap:"28px",fontFamily:"var(--font-display)",fontSize:"30px",letterSpacing:".06em"}}>
-            COMPRA · REFORMA · REVENDA
-            <span style={{width:"8px",height:"8px",background:"currentColor",transform:"rotate(45deg)"}}></span>
-          </span>
-        </div>
+        <Ticker />
       </div>
     </>
   );

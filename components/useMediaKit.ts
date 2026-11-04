@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import type { MouseEvent as ReactMouseEvent } from "react";
 import { DATA } from "@/lib/data";
 
@@ -55,6 +56,8 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
   const [narrow, setNarrow] = useState(false);
   const [intro, setIntro] = useState(false);
   const [siteW, setSiteW] = useState<number | undefined>(undefined);
+  const [featuredBrand, setFeaturedBrand] = useState("70mai");
+  const featuredRef = useRef<HTMLDivElement>(null);
   const siteRef = useRef<HTMLDivElement>(null);
 
   // Escape fecha o modal
@@ -128,19 +131,36 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
   }, []);
 
   const openCase = (brand: string) => {
-    const featured = brand === "70mai";
+    const featured = brand === featuredBrand;
     setModal({
       kicker: (featured ? "CASE EM DESTAQUE · " : "CASE · ") + brand.toUpperCase() + " × ALLBLACK",
       title: "CAMPANHA " + brand.toUpperCase(),
       slotId: "modal-case-" + slug(brand),
       photo: D.casePhotos[brand], photoPos: "center 30%", photoFilter: "none",
-      placeholder: featured ? "Vídeo da campanha 70mai" : "Imagem da campanha " + brand,
+      placeholder: "Imagem da campanha " + brand,
       body: "Descrição do conteúdo, objetivo da campanha e entregas realizadas, a preencher com informações oficiais da marca e do criador. Nenhum resultado é exibido até a confirmação dos dados reais.",
       specs: [{ k: "MARCA", v: brand }, { k: "FORMATO", v: "A confirmar" }, { k: "PLATAFORMA", v: "A confirmar" }, { k: "PERÍODO", v: "A confirmar" }],
       chipsLabel: "MÉTRICAS OFICIAIS",
       chips: D.caseStats[brand] || D.caseMetricSlots.map((m: string) => ({ a: "— —", b: m })),
       note: D.caseStats[brand] ? "FONTE: INSTAGRAM · REEL PUBLICADO" : "RESULTADOS AGUARDANDO DADOS REAIS",
     });
+  };
+
+  /** Leva o case clicado para o destaque: rola até o topo do bloco e anima a troca (View Transitions). */
+  const featureCase = (brand: string) => {
+    if (brand === featuredBrand) return;
+    const el = featuredRef.current;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const doc = document as Document & { startViewTransition?: (cb: () => void) => unknown };
+    if (!el || reduce || !doc.startViewTransition) { setFeaturedBrand(brand); return; }
+    const top = el.getBoundingClientRect().top + window.scrollY - 88;
+    const swap = () => doc.startViewTransition!(() => flushSync(() => setFeaturedBrand(brand)));
+    if (Math.abs(window.scrollY - top) < 8) { swap(); return; }
+    let done = false;
+    const go = () => { if (done) return; done = true; window.removeEventListener("scrollend", go); swap(); };
+    window.addEventListener("scrollend", go);
+    setTimeout(go, 700); // navegadores sem o evento scrollend
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -200,12 +220,23 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     storyCards: D.storyCards.map((c: any) => ({ ...c, srcColor: c.real ? "var(--color-accent-400)" : "var(--color-neutral-500)" })),
     storyWhy: D.storyWhy,
-    featured: { open: () => openCase("70mai") },
-    featuredStats: [{ a: "203K", b: "CURTIDAS", icon: "ph-heart" }, { a: "2.005", b: "REPOSTS", icon: "ph-repeat" }, { a: "178", b: "COMENTÁRIOS", icon: "ph-chat-circle" }],
-    cases: D.brands.filter((b: string) => b !== "70mai").map((b: string, i: number) => ({
-      brand: b, stats: D.caseStats[b] || [], hasStats: !!D.caseStats[b], noStats: !D.caseStats[b],
+    featuredRef,
+    featuredCase: (() => {
+      const b = featuredBrand, st = D.caseStats[b] || [];
+      const info = D.caseInfo[b] || { desc: "", tags: [] };
+      const icons = ["ph-heart", "ph-repeat", "ph-chat-circle"];
+      return {
+        brand: b, slug: slug(b), photo: D.casePhotos[b], desc: info.desc, tags: info.tags,
+        kicker: b.toUpperCase() + " × ALLBLACK · " + (D.caseFormats[b] || "FORMATO A CONFIRMAR"),
+        views: st[0]?.a || "— —",
+        stats: st.slice(1).map((x: { a: string; b: string }, i: number) => ({ ...x, icon: icons[i] })),
+        open: () => openCase(b),
+      };
+    })(),
+    cases: D.brands.map((b: string, i: number) => ({ b, i })).filter(({ b }: { b: string }) => b !== featuredBrand).map(({ b, i }: { b: string; i: number }) => ({
+      brand: b, slug: slug(b), stats: D.caseStats[b] || [], hasStats: !!D.caseStats[b], noStats: !D.caseStats[b],
       hasPhoto: !!D.casePhotos[b], noPhoto: !D.casePhotos[b], photoBg: D.casePhotos[b] ? "url(" + D.casePhotos[b] + ")" : "none",
-      n: "CASE " + pad2(i + 2), format: D.caseFormats[b] || "FORMATO A CONFIRMAR", slotId: "case-" + slug(b), open: () => openCase(b),
+      n: "CASE " + pad2(i + 1), format: D.caseFormats[b] || "FORMATO A CONFIRMAR", slotId: "case-" + slug(b), open: () => featureCase(b),
     })),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     projects: D.projects.map((p: any) => ({ ...p, hasStats: !!p.stats, hasPhoto: !!p.photo, noPhoto: !p.photo, photoBg: p.photo ? "url(" + p.photo + ")" : "none", open: () => openProject(p) })),

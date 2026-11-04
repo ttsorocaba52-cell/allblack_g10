@@ -42,7 +42,7 @@ export const DATA = {
         { code: 'PROFILE', v: '130,7K', l: 'Visitas ao perfil · +186%', real: true }
       ] },
     { id: 'facebook', n: '04', name: 'Facebook', handle: 'ALLBLACK', icon: 'ph-facebook-logo', featured: false,
-      head: { v: '90K', l: 'Seguidores', real: false },
+      head: { v: '111K', l: 'Seguidores', real: 'brief' },
       chartLabel: 'ALCANCE / SEMANA (ILUSTR.)', chart: [70, 66, 72, 68, 74, 80, 76, 72, 84, 78, 88, 100],
       metrics: [
         { code: 'RCH', v: '600K', l: 'Alcance mensal', real: false },
@@ -72,6 +72,14 @@ export const DATA = {
   casePhotos: { '70mai': '/assets/case-70mai.png', 'Couple2': '/assets/case-couple2.png', 'Faaftech': '/assets/case-fasttech.png', 'Petrobras + Lubrax': '/assets/case-petrobras-lubrax.png', 'K&N Filtros': '/assets/case-kn.png' },
   caseFormats: { '70mai': 'REEL · INSTAGRAM', 'Couple2': 'PUBLI · APP', 'Faaftech': 'REEL · INSTAGRAM', 'Petrobras + Lubrax': 'REEL · INSTAGRAM', 'K&N Filtros': 'REEL · INSTAGRAM' },
   caseStats: { 'K&N Filtros': [{ a: '509K', b: 'VISUALIZAÇÕES' }, { a: '30,1K', b: 'CURTIDAS' }, { a: '427', b: 'REPOSTS' }, { a: '74', b: 'COMENTÁRIOS' }], 'Petrobras + Lubrax': [{ a: '2,1M', b: 'VISUALIZAÇÕES' }, { a: '83,8K', b: 'CURTIDAS' }, { a: '100', b: 'REPOSTS' }, { a: '64', b: 'COMENTÁRIOS' }], 'Faaftech': [{ a: '2,4M', b: 'VISUALIZAÇÕES' }, { a: '171K', b: 'CURTIDAS' }, { a: '4.207', b: 'REPOSTS' }, { a: '147', b: 'COMENTÁRIOS' }], 'Couple2': [{ a: '4,9M', b: 'VISUALIZAÇÕES' }, { a: '346K', b: 'CURTIDAS' }, { a: '5.129', b: 'REPOSTS' }, { a: '1.499', b: 'COMENTÁRIOS' }], '70mai': [{ a: '9,1M', b: 'VISUALIZAÇÕES' }, { a: '203K', b: 'CURTIDAS' }, { a: '2.005', b: 'REPOSTS' }, { a: '178', b: 'COMENTÁRIOS' }] },
+  // Texto do case quando ele está em destaque. Preencha a descrição real de cada campanha.
+  caseInfo: {
+    '70mai': { desc: 'Publi da dashcam 70mai integrada a um reel de humor: "Quando você esquece que está com a sua namorada…". O produto aparece como parte natural da cena, com as câmeras frontal, interna e traseira gravando a situação.', tags: ['DASHCAM', 'HUMOR', 'PRODUTO EM USO'] },
+    'Couple2': { desc: 'Publi do app Couple2 integrada ao conteúdo do perfil.', tags: ['APP', 'PUBLI'] },
+    'Petrobras + Lubrax': { desc: 'Reel em parceria com Petrobras e Lubrax publicado no Instagram.', tags: ['REEL', 'INSTAGRAM'] },
+    'K&N Filtros': { desc: 'Reel em parceria com a K&N Filtros publicado no Instagram.', tags: ['REEL', 'INSTAGRAM'] },
+    'Faaftech': { desc: 'Reel em parceria com a Faaftech publicado no Instagram.', tags: ['REEL', 'INSTAGRAM'] }
+  },
   caseMetricSlots: ['VISUALIZAÇÕES', 'ALCANCE', 'ENGAJAMENTO'],
   projects: [
     { id: 'p1', num: '01', slotId: 'proj-revenda', statsLabel: 'VÍDEO DESTAQUE · ACESSÓRIOS DO CARRO · YOUTUBE', stats: [{ v: '159K', l: 'VISUALIZAÇÕES' }, { v: '7,2K', l: 'CURTIDAS' }, { v: '222', l: 'COMENTÁRIOS' }], placeholder: 'Civic preto da série Revendendo carros', photo: '/assets/projeto01-civic-v2.png', photoPos: '55% 60%', photoFilter: 'saturate(.55) brightness(.72) contrast(1.12)',
