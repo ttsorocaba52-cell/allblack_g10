@@ -2,6 +2,7 @@
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
 import { CaseShowcase } from "../interactive/CaseShowcase";
+import { PackagesCta } from "../interactive/PackagesDrawer";
 
 export function Campaigns({ v }: { v: V }) {
   return (
@@ -50,6 +51,7 @@ export function Campaigns({ v }: { v: V }) {
           </span>
         </div>
         <CaseShowcase onOpen={v.openCase} />
+        <PackagesCta onContact={() => v.goContact(undefined)} />
       </section>
     </>
   );
