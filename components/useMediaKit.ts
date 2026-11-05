@@ -121,13 +121,13 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
     return () => { ro.disconnect(); io.disconnect(); spy.disconnect(); offReady(); };
   }, []);
 
-  const go = useCallback((id: string, e?: Ev) => {
+  const go = useCallback((id: string, e?: Ev, offset?: number) => {
     e?.preventDefault?.();
     setMenu(false);
     const el = siteRef.current?.querySelector("#" + id);
     if (!el) return;
     const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
-    const off = id === "top" ? 0 : 64;
+    const off = offset ?? (id === "top" ? 0 : 64);
     window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - off, behavior });
   }, []);
 
@@ -177,6 +177,8 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
     toggleMenu: () => setMenu((m) => !m),
     navItems: D.nav.map((n: { id: string }) => ({ ...n, current: active === n.id ? ("page" as const) : undefined, go: (e: Ev) => go(n.id, e) })),
     goTop: (e: Ev) => go("top", e), goAbout: (e: Ev) => go("sobre", e), goContact: (e: Ev) => go("contato", e),
+    /** Rola até qualquer seção pelo id (usado pela página /metricas). */
+    goTo: go, active,
     barH: cinematicIntro && !intro ? "13%" : "0%",
     heroStats: D.heroStats, aboutSpecs: D.aboutSpecs,
     tabCols: "repeat(2,minmax(0,1fr))",

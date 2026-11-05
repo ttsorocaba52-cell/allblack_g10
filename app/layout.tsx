@@ -4,7 +4,12 @@ import "@phosphor-icons/web/fill";
 import "./globals.css";
 import { Preloader } from "@/components/Preloader";
 
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "https://allblack-g10.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "ALLBLACK — Mídia Kit · João Pedro",
   description: "Mídia kit da ALLBLACK G10: projetos de carros, modificações e entretenimento automotivo com o Civic G10. Números, campanhas e formatos para marcas.",
   icons: { icon: "/assets/logo-allblack-g10.png" },
