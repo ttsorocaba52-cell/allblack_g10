@@ -3,6 +3,7 @@ import type { V } from "../useMediaKit";
 import { Fragment } from "react";
 import { CountUp } from "../interactive/CountUp";
 import { Ticker } from "../interactive/Ticker";
+import { HeroButtons } from "../interactive/HeroButtons";
 
 export function Hero({ v }: { v: V }) {
   return (
@@ -60,13 +61,7 @@ export function Hero({ v }: { v: V }) {
                 Projetos de carros, modificações e entretenimento automotivo com o Civic G10 como símbolo. Uma comunidade que acompanha cada projeto, e um canal direto para marcas que querem estar dentro da garagem.
               </p>
               <div data-reveal="850" style={{display:"flex",flexWrap:"wrap",gap:"12px",marginTop:"8px",pointerEvents:"auto"}}>
-                <button className="btn btn-primary" onClick={v.goAbout} style={{minHeight:"48px",padding:"0 22px",fontFamily:"var(--font-mono)",fontSize:"12px",letterSpacing:".14em",background:"color-mix(in srgb,var(--color-accent) 10%,transparent)"}}>
-                  EXPLORAR MÍDIA KIT{" "}
-                  <i className="ph ph-arrow-down-right" style={{fontSize:"16px"}}></i>
-                </button>
-                <button className="btn btn-secondary" onClick={v.goContact} style={{minHeight:"48px",padding:"0 22px",fontFamily:"var(--font-mono)",fontSize:"12px",letterSpacing:".14em",background:"rgba(9,9,9,.5)"}}>
-                  CONTATO COMERCIAL
-                </button>
+                <HeroButtons onExplore={v.goAbout} onContact={v.goContact} />
               </div>
             </div>
           </div>
