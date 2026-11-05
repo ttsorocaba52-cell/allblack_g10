@@ -118,8 +118,8 @@ export const DATA = {
     { label: 'INSTAGRAM', icon: 'ph-instagram-logo', href: 'https://instagram.com/allblack_g10', cls: 'btn-secondary', tmp: '' }
   ],
   nav: [
-    { id: 'sobre', n: '01', label: 'Sobre' }, { id: 'instagram', n: '02', label: 'Instagram' }, { id: 'youtube', n: '03', label: 'YouTube' }, { id: 'audiencia', n: '04', label: 'TikTok & FB' },
-    { id: 'marcas', n: '05', label: 'Campanhas' }, { id: 'projetos', n: '06', label: 'Projetos' }, { id: 'formatos', n: '07', label: 'Formatos' }
+    { id: 'sobre', n: '01', label: 'Sobre' }, { id: 'instagram', n: '02', label: 'Instagram' }, { id: 'marcas', n: '03', label: 'Campanhas' }, { id: 'youtube', n: '04', label: 'YouTube' },
+    { id: 'audiencia', n: '05', label: 'TikTok & FB' }, { id: 'projetos', n: '06', label: 'Projetos' }, { id: 'formatos', n: '07', label: 'Formatos' }
   ],
   yt: {
     kpis: [

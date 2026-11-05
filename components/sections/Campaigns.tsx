@@ -6,12 +6,12 @@ import { CaseShowcase } from "../interactive/CaseShowcase";
 export function Campaigns({ v }: { v: V }) {
   return (
     <>
-      {/* 05 CAMPANHAS */}
+      {/* 03 CAMPANHAS */}
       <section id="marcas" data-section="marcas" style={{padding:"clamp(72px,10cqw,150px) var(--gutter)",background:"var(--color-surface)"}}>
         <div style={{display:"flex",flexDirection:"column",gap:"16px",marginBottom:"clamp(32px,5cqw,64px)"}}>
           <div data-reveal="0" style={{display:"flex",alignItems:"center",gap:"12px",fontFamily:"var(--font-mono)",fontSize:"12px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
             <span style={{display:"inline-block",padding:"2px 8px",background:"#F5C400",color:"#090909",transform:"skewX(-12deg)",fontWeight:"500"}}>
-              05
+              03
             </span>
             <span style={{width:"32px",height:"1px",background:"var(--color-accent)"}}></span>
             <span>

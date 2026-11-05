@@ -27,10 +27,10 @@ export function MediaKit(props: MediaKitOptions) {
         <Hero v={v} />
         <About v={v} />
         <Instagram v={v} />
+        <Campaigns v={v} />
         <Stories v={v} />
         <YouTube v={v} />
         <Audience v={v} />
-        <Campaigns v={v} />
         <Projects v={v} />
         <Formats v={v} />
         <Contact v={v} />
