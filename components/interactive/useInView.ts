@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { onReady } from "@/lib/ready";
 
 /** Fica `true` (uma vez só) quando o elemento entra na tela. */
 export function useInView<T extends Element>(threshold = 0.35) {
@@ -13,8 +14,8 @@ export function useInView<T extends Element>(threshold = 0.35) {
       ([e]) => { if (e.isIntersecting) { setInView(true); io.disconnect(); } },
       { threshold },
     );
-    io.observe(el);
-    return () => io.disconnect();
+    const off = onReady(() => io.observe(el)); // só depois da tela de abertura
+    return () => { off(); io.disconnect(); };
   }, [inView, threshold]);
   return [ref, inView] as const;
 }

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
 import { DATA } from "@/lib/data";
+import { onReady } from "@/lib/ready";
 
 // Os dados misturam tuplas e objetos; tipamos de forma solta para manter a lógica idêntica ao protótipo.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -66,8 +67,9 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
 
   // Abertura cinematográfica
   useEffect(() => {
-    const t = setTimeout(() => setIntro(true), 350);
-    return () => clearTimeout(t);
+    let t: ReturnType<typeof setTimeout> | undefined;
+    const off = onReady(() => { t = setTimeout(() => setIntro(true), 150); });
+    return () => { off(); if (t) clearTimeout(t); };
   }, []);
 
   // Largura do site, animações de entrada e seção ativa no menu
@@ -96,6 +98,7 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
       }),
       { threshold: 0.12 },
     );
+    const pending: HTMLElement[] = [];
     site.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
       if (reduce || el.dataset.rv) return;
       el.dataset.rv = "1";
@@ -105,8 +108,9 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
       el.style.transition =
         `opacity .9s cubic-bezier(.2,.7,.2,1) ${d}ms, transform .9s cubic-bezier(.2,.7,.2,1) ${d}ms` +
         (el.style.transition ? "," + el.style.transition : "");
-      io.observe(el);
+      pending.push(el);
     });
+    const offReady = onReady(() => pending.forEach((el) => io.observe(el)));
 
     const spy = new IntersectionObserver(
       (es) => es.forEach((e) => { if (e.isIntersecting) setActive((e.target as HTMLElement).dataset.section || "top"); }),
@@ -114,7 +118,7 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
     );
     site.querySelectorAll("[data-section]").forEach((el) => spy.observe(el));
 
-    return () => { ro.disconnect(); io.disconnect(); spy.disconnect(); };
+    return () => { ro.disconnect(); io.disconnect(); spy.disconnect(); offReady(); };
   }, []);
 
   const go = useCallback((id: string, e?: Ev) => {
