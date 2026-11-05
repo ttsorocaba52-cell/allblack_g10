@@ -5,6 +5,7 @@ import { Nav } from "./sections/Nav";
 import { Hero } from "./sections/Hero";
 import { About } from "./sections/About";
 import { Instagram } from "./sections/Instagram";
+import { InstagramAudience } from "./sections/InstagramAudience";
 import { Stories } from "./sections/Stories";
 import { YouTube } from "./sections/YouTube";
 import { Audience } from "./sections/Audience";
@@ -28,6 +29,7 @@ export function MediaKit(props: MediaKitOptions) {
         <About v={v} />
         <Instagram v={v} />
         <Campaigns v={v} />
+        <InstagramAudience v={v} />
         <Stories v={v} />
         <YouTube v={v} />
         <Audience v={v} />
