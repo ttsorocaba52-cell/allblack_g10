@@ -122,8 +122,8 @@ export const DATA = {
   ],
   contacts: [
     { label: 'E-MAIL', icon: 'ph-envelope-simple', href: 'mailto:allblackg10.contato@gmail.com', cls: 'btn-primary', tmp: '' },
-    { label: 'WHATSAPP', icon: 'ph-whatsapp-logo', href: 'https://wa.me/5500000000000', cls: 'btn-secondary', tmp: 'PROVISÓRIO' },
-    { label: 'INSTAGRAM', icon: 'ph-instagram-logo', href: 'https://instagram.com/allblack_g10', cls: 'btn-secondary', tmp: '' }
+    { label: 'WHATSAPP', icon: 'ph-whatsapp-logo', href: 'https://wa.me/5519981748186?text=Ol%C3%A1%21%20Vi%20o%20m%C3%ADdia%20kit%20da%20ALLBLACK%20e%20quero%20falar%20sobre%20uma%20parceria.', cls: 'btn-secondary', tmp: '' },
+    { label: 'INSTAGRAM', icon: 'ph-instagram-logo', href: 'https://www.instagram.com/allblack_g10', cls: 'btn-secondary', tmp: '' }
   ],
   nav: [
     { id: 'sobre', n: '01', label: 'Sobre' }, { id: 'instagram', n: '02', label: 'Instagram' }, { id: 'marcas', n: '03', label: 'Campanhas' }, { id: 'youtube', n: '04', label: 'YouTube' },

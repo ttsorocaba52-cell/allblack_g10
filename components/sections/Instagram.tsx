@@ -64,7 +64,7 @@ export function Instagram({ v }: { v: V }) {
               ))}
             </div>
             <div style={{display:"flex",flexWrap:"wrap",gap:"10px",marginTop:"auto"}}>
-              <a className="btn btn-primary" href="https://instagram.com/allblack_g10" target="_blank" rel="noopener" style={{minHeight:"44px",padding:"0 18px",gap:"8px",fontFamily:"var(--font-mono)",fontSize:"11px",letterSpacing:".14em"}}>
+              <a className="btn btn-primary" href="https://www.instagram.com/allblack_g10" target="_blank" rel="noopener" style={{minHeight:"44px",padding:"0 18px",gap:"8px",fontFamily:"var(--font-mono)",fontSize:"11px",letterSpacing:".14em"}}>
                 <i className="ph ph-instagram-logo" style={{fontSize:"16px"}}></i>
                 VER PERFIL
               </a>
