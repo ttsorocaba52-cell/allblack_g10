@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { CSSProperties, KeyboardEvent, PointerEvent } from "react";
 import { DATA } from "@/lib/data";
 
@@ -12,6 +13,29 @@ const pad2 = (n: number) => String(n).padStart(2, "0");
 
 type Stat = { a: string; b: string };
 
+/** Player em tela cheia para o reel do case (vertical, com som e controles). */
+function VideoLightbox({ src, poster, title, onClose }: { src: string; poster: string; title: string; onClose: () => void }) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const onKey = (e: globalThis.KeyboardEvent) => { if (e.key === "Escape") { e.stopPropagation(); onClose(); } };
+    window.addEventListener("keydown", onKey, true);
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    return () => { window.removeEventListener("keydown", onKey, true); document.body.style.overflow = overflow; };
+  }, [onClose]);
+  return createPortal(
+    <div className="vl" role="dialog" aria-modal="true" aria-label={`Vídeo: ${title}`} onClick={onClose} onKeyDown={(e) => e.stopPropagation()}>
+      <div className="vl-frame" onClick={(e) => e.stopPropagation()}>
+        <video className="vl-video" src={src} poster={poster} controls autoPlay playsInline preload="auto" />
+        <button ref={closeRef} className="vl-close" onClick={onClose} aria-label="Fechar vídeo"><i className="ph ph-x" /></button>
+        <span className="vl-title">{title}</span>
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
 /**
  * Cases comerciais em formato de "player": um case por vez, com miniaturas,
  * setas, teclado (← →) e swipe no celular. A troca acontece no mesmo lugar,
@@ -21,6 +45,7 @@ export function CaseShowcase({ onOpen }: { onOpen: (brand: string) => void }) {
   const [idx, setIdx] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
   const [dir, setDir] = useState<1 | -1>(1);
+  const [playing, setPlaying] = useState(false);
   const swipe = useRef<{ x: number; y: number } | null>(null);
   const thumbs = useRef<HTMLDivElement>(null);
 
@@ -48,6 +73,7 @@ export function CaseShowcase({ onOpen }: { onOpen: (brand: string) => void }) {
   };
 
   const brand = BRANDS[idx];
+  const video: string | undefined = D.caseVideos?.[brand];
   const stats: Stat[] = D.caseStats[brand] || [];
   const info = D.caseInfo[brand] || { desc: "", tags: [] };
   const photo = (i: number) => `url(${D.casePhotos[BRANDS[i]]})`;
@@ -66,6 +92,12 @@ export function CaseShowcase({ onOpen }: { onOpen: (brand: string) => void }) {
           style={{ backgroundImage: photo(idx) }}
           onAnimationEnd={() => setPrev(null)}
         />
+        {video && (
+          <button className="cs-play" onClick={() => setPlaying(true)} onPointerDown={(e) => e.stopPropagation()} aria-label={`Assistir ao reel da campanha ${brand}`}>
+            <span className="cs-play-ring"><i className="ph-fill ph-play" /></span>
+            <span className="cs-play-label">ASSISTIR REEL</span>
+          </button>
+        )}
         <span className="cs-badge tag tag-accent">CASE {pad2(idx + 1)} / {pad2(BRANDS.length)}</span>
         <button className="cs-open-m tag tag-accent" onClick={() => onOpen(brand)}>
           ABRIR CASE <i className="ph ph-arrow-up-right" />
@@ -124,6 +156,9 @@ export function CaseShowcase({ onOpen }: { onOpen: (brand: string) => void }) {
           </button>
         </div>
       </div>
+      {playing && video && (
+        <VideoLightbox src={video} poster={D.casePhotos[brand]} title={`Campanha ${brand}`} onClose={() => setPlaying(false)} />
+      )}
     </div>
   );
 }
