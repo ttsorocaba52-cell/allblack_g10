@@ -25,7 +25,7 @@ function useMagnet(strength = 0.18) {
 }
 
 /** Botões do hero: "Explorar mídia kit" (principal) e "Contato comercial". */
-export function HeroButtons({ onExplore, onContact, exploreLabel = "EXPLORAR MÍDIA KIT" }: { onExplore: (e: Ev) => void; onContact: (e: Ev) => void; exploreLabel?: string }) {
+export function HeroButtons({ onExplore, onContact }: { onExplore: (e: Ev) => void; onContact: (e: Ev) => void }) {
   const a = useMagnet();
   const b = useMagnet();
   return (
@@ -33,7 +33,7 @@ export function HeroButtons({ onExplore, onContact, exploreLabel = "EXPLORAR MÍ
       <button {...a} className="hb hb-primary" onClick={onExplore}>
         <span className="hb-fill" aria-hidden="true" />
         <span className="hb-shine" aria-hidden="true" />
-        <span className="hb-label">{exploreLabel}</span>
+        <span className="hb-label">EXPLORAR MÍDIA KIT</span>
         <i className="ph ph-arrow-down-right hb-arrow" />
       </button>
       <button {...b} className="hb hb-secondary" onClick={onContact}>
