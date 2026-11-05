@@ -5,7 +5,8 @@ import { CountUp } from "../interactive/CountUp";
 import { Ticker } from "../interactive/Ticker";
 import { HeroButtons } from "../interactive/HeroButtons";
 
-export function Hero({ v }: { v: V }) {
+/** exploreLabel: texto do botão principal (a página /metricas usa outro). */
+export function Hero({ v, exploreLabel }: { v: V; exploreLabel?: string }) {
   return (
     <>
       {/* 01 HERO */}
@@ -61,7 +62,7 @@ export function Hero({ v }: { v: V }) {
                 Projetos de carros, modificações e entretenimento automotivo com o Civic G10 como símbolo. Uma comunidade que acompanha cada projeto, e um canal direto para marcas que querem estar dentro da garagem.
               </p>
               <div data-reveal="850" style={{display:"flex",flexWrap:"wrap",gap:"12px",marginTop:"8px",pointerEvents:"auto"}}>
-                <HeroButtons onExplore={v.goAbout} onContact={v.goContact} />
+                <HeroButtons onExplore={v.goAbout} onContact={v.goContact} exploreLabel={exploreLabel} />
               </div>
             </div>
           </div>
