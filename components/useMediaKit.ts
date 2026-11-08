@@ -46,9 +46,11 @@ export type MediaKitOptions = {
   cinematicIntro?: boolean;
   /** Etiquetas INSIGHTS / BRIEFING / ILUSTRATIVO nos números. */
   showDataTags?: boolean;
+  /** Esconde preços e pacotes (seção Formatos, painel de pacotes e item do menu). Usado em /kit. */
+  hidePricing?: boolean;
 };
 
-export function useMediaKit({ cinematicIntro = true, showDataTags = true }: MediaKitOptions = {}) {
+export function useMediaKit({ cinematicIntro = true, showDataTags = true, hidePricing = false }: MediaKitOptions = {}) {
   const [platform, setPlatform] = useState("tiktok");
   const [modal, setModal] = useState<Modal>(null);
   const [menu, setMenu] = useState(false);
@@ -175,7 +177,8 @@ export function useMediaKit({ cinematicIntro = true, showDataTags = true }: Medi
     compact, wide: !compact, showTags,
     menuOpen: compact && menu, menuExpanded: menu, menuIcon: menu ? "ph-x" : "ph-list",
     toggleMenu: () => setMenu((m) => !m),
-    navItems: D.nav.map((n: { id: string }) => ({ ...n, current: active === n.id ? ("page" as const) : undefined, go: (e: Ev) => go(n.id, e) })),
+    hidePricing,
+    navItems: D.nav.filter((n: { id: string }) => !(hidePricing && n.id === "formatos")).map((n: { id: string }) => ({ ...n, current: active === n.id ? ("page" as const) : undefined, go: (e: Ev) => go(n.id, e) })),
     goTop: (e: Ev) => go("top", e), goAbout: (e: Ev) => go("sobre", e), goContact: (e: Ev) => go("contato", e),
     /** Rola até qualquer seção pelo id (usado pela página /metricas). */
     goTo: go, active,

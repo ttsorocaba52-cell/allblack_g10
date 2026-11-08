@@ -51,7 +51,7 @@ export function Campaigns({ v }: { v: V }) {
           </span>
         </div>
         <CaseShowcase onOpen={v.openCase} />
-        <PackagesCta onContact={() => v.goContact(undefined)} />
+        {!v.hidePricing && <PackagesCta onContact={() => v.goContact(undefined)} />}
       </section>
     </>
   );

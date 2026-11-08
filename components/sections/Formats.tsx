@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { V } from "../useMediaKit";
 import { Fragment } from "react";
+import { Stripe } from "./Stripe";
 
 export function Formats({ v }: { v: V }) {
   return (
@@ -100,7 +101,7 @@ export function Formats({ v }: { v: V }) {
           </button>
         </div>
       </section>
-      <div aria-hidden="true" style={{height:"12px",background:"repeating-linear-gradient(-45deg,#F5C400 0 16px,#090909 16px 32px)"}}></div>
+      <Stripe />
     </>
   );
 }

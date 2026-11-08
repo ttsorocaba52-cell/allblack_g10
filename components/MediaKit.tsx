@@ -12,6 +12,7 @@ import { Audience } from "./sections/Audience";
 import { Campaigns } from "./sections/Campaigns";
 import { Projects } from "./sections/Projects";
 import { Formats } from "./sections/Formats";
+import { Stripe } from "./sections/Stripe";
 import { Contact } from "./sections/Contact";
 import { Modal } from "./sections/Modal";
 
@@ -34,7 +35,7 @@ export function MediaKit(props: MediaKitOptions) {
         <YouTube v={v} />
         <Audience v={v} />
         <Projects v={v} />
-        <Formats v={v} />
+        {v.hidePricing ? <Stripe /> : <Formats v={v} />}
         <Contact v={v} />
       </div>
       <Modal v={v} />
