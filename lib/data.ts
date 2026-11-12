@@ -97,13 +97,13 @@ export const DATA = {
       body: 'Uma série de progressão: cada episódio é uma negociação, uma transformação e uma revenda. O público acompanha a estratégia, os riscos e o resultado, e torce pelo próximo passo rumo ao carro dos sonhos.',
       specs: [{ k: 'FORMATO', v: 'Série YouTube' }, { k: 'EPISÓDIOS', v: 'Série em andamento' }, { k: 'ARCO', v: 'Compra → transformação → revenda' }, { k: 'VÍDEO DESTAQUE', v: '159K views · 7,2K curtidas · 222 comentários' }],
       chipsLabel: 'ONDE A MARCA ENTRA EM CADA CARRO', chips: [{ a: 'COMPRA', b: 'Avaliação, vistoria, financiamento' }, { a: 'OFICINA', b: 'Peças, fluidos, ferramentas' }, { a: 'ESTÉTICA', b: 'Rodas, envelopamento, detalhamento' }, { a: 'TECNOLOGIA', b: 'Som, multimídia, acessórios' }, { a: 'REVENDA', b: 'Anúncio, entrega, documentação' }, { a: 'BASTIDORES', b: 'Stories, reels e shorts derivados' }] },
-    { id: 'p2', num: '02', slotId: 'proj-civic', placeholder: 'Thumb: reforma do Civic G10',
-      title: 'REFORMA DO CIVIC G10',
-      short: 'A transformação do carro-símbolo do canal: o G10 preto que dá nome e identidade ao universo ALLBLACK.',
-      tags: ['CIVIC G10', 'REFORMA', 'MODIFICAÇÕES'],
-      body: 'O projeto que define a marca. A reforma do Civic G10 documentada etapa por etapa: espaço natural para peças, fluidos, acessórios e serviços aparecerem como parte real da reforma.',
-      specs: [{ k: 'FORMATO', v: 'Série YouTube' }, { k: 'CARRO', v: 'Honda Civic G10' }, { k: 'EPISÓDIOS', v: 'A confirmar' }, { k: 'MÉTRICAS', v: 'Aguardando insights' }],
-      chipsLabel: 'FASES DO PROJETO · A CONFIRMAR', chips: [{ a: 'FASE 01', b: 'Ponto de partida' }, { a: 'FASE 02', b: 'Transformação' }, { a: 'FASE 03', b: 'Revelação' }] }
+    { id: 'p2', num: '02', slotId: 'proj-revenda-ep2', statsLabel: 'EPISÓDIO 02 · YOUTUBE', stats: [{ v: '214K', l: 'VISUALIZAÇÕES' }, { v: '3,7K', l: 'CURTIDAS' }, { v: '122', l: 'COMENTÁRIOS' }], placeholder: 'Lavagem do carro do episódio 2 da série Revendendo carros', photo: '/assets/projeto02-ep2.webp', photoPos: '50% 55%', photoFilter: 'saturate(.85) brightness(.82) contrast(1.06)',
+      title: 'REVENDENDO CARROS · EP\u00a02',
+      short: 'O segundo carro da jornada rumo ao carro dos sonhos: lavagem completa e cuidados de estética para valorizar o carro antes da revenda.',
+      tags: ['EPISÓDIO 02', 'ESTÉTICA', 'LAVAGEM', 'REVENDA'],
+      body: 'Segundo episódio da série Revendendo carros até o carro dos sonhos. O carro da vez passa por lavagem completa e cuidados de estética antes de voltar ao mercado: o tipo de etapa em que produtos e serviços aparecem em uso real, na frente do público.',
+      specs: [{ k: 'FORMATO', v: 'Episódio YouTube' }, { k: 'SÉRIE', v: 'Revendendo carros até o carro dos sonhos' }, { k: 'EPISÓDIO', v: '02' }, { k: 'RESULTADO', v: '214K views · 3,7K curtidas · 122 comentários' }],
+      chipsLabel: 'ONDE A MARCA ENTRA NESTE EPISÓDIO', chips: [{ a: 'LAVAGEM', b: 'Shampoo, snow foam, equipamentos' }, { a: 'ESTÉTICA', b: 'Polimento, vitrificação, detalhamento' }, { a: 'ESPAÇO', b: 'Estúdio, iluminação, acessórios' }, { a: 'BASTIDORES', b: 'Stories, reels e shorts derivados' }] }
   ],
   sponsorOps: [
     { n: '01', t: 'Patrocínio master', d: 'Marca apresentadora da temporada, com abertura e encerramento.' },
