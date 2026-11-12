@@ -646,3 +646,7 @@ html.ab-loading, html.ab-loading body { overflow: hidden; }
   .mx-btn { flex: 1 1 100%; }
   .mx-stat-n { font-size: 40px; }
 }
+
+/* "1 MILHÃO" na seção Instagram: preenche a coluna (lado a lado no desktop, largura toda no celular) */
+.ig-million { font-size: clamp(72px, 14.4cqw, 290px); }
+@container (max-width: 860px) { .ig-million { font-size: min(29.4cqw, 230px); } }

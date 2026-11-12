@@ -79,12 +79,12 @@ export function Instagram({ v }: { v: V }) {
               <span style={{fontFamily:"var(--font-mono)",fontSize:"11px",letterSpacing:".16em",color:"var(--color-accent-400)"}}>
                 SEGUIDORES NO INSTAGRAM
               </span>
-              <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(120px,17cqw,260px)",lineHeight:".8"}}>
-                <CountUp value={"1M"} />
+              <span className="ig-million" style={{fontFamily:"var(--font-display)",lineHeight:".8",whiteSpace:"nowrap"}}>
+                <CountUp value={"1 MILHÃO"} />
               </span>
               <span style={{display:"flex",alignItems:"center",gap:"12px",fontSize:"15px",color:"var(--color-neutral-300)"}}>
-                <span style={{display:"inline-block",padding:"3px 10px",background:"#F5C400",color:"#090909",transform:"skewX(-12deg)",fontFamily:"var(--font-mono)",fontSize:"11px",fontWeight:"500",letterSpacing:".12em"}}>
-                  1 MILHÃO
+                <span style={{whiteSpace:"nowrap",display:"inline-block",padding:"3px 10px",background:"#F5C400",color:"#090909",transform:"skewX(-12deg)",fontFamily:"var(--font-mono)",fontSize:"11px",fontWeight:"500",letterSpacing:".12em"}}>
+                  MARCO ATINGIDO
                 </span>
                 +3 milhões de seguidores somando todas as redes
               </span>
