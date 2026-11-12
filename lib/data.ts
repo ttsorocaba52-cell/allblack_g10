@@ -3,7 +3,7 @@
 export const DATA = {
   heroStats: [
     { v: '106M', l: 'Visualizações no Instagram · 90 dias', src: 'INSIGHTS IG' },
-    { v: '989K', l: 'Seguidores no Instagram', src: 'PERFIL IG' },
+    { v: '1M', l: 'Seguidores no Instagram', src: 'PERFIL IG' },
     { v: '25,1M', l: 'Visualizações no YouTube · 28 dias', src: 'INSIGHTS YT' },
     { v: '80K+', l: 'Média de views por story', src: 'BRIEFING' }
   ],
@@ -15,7 +15,7 @@ export const DATA = {
   ],
   platforms: [
     { id: 'instagram', n: '01', name: 'Instagram', handle: '@allblack_g10', icon: 'ph-instagram-logo', featured: true,
-      head: { v: '989K', l: 'Seguidores no Instagram', real: true },
+      head: { v: '1M', l: 'Seguidores no Instagram', real: true },
       chartLabel: 'VIEWS DIÁRIAS · 29 SET – 28 OUT', span: '30 DIAS', chart: [27, 18, 16, 32, 20, 27, 32, 23, 100, 45, 27, 86, 43, 55, 61, 48, 50, 30, 52, 55, 66, 25, 41, 43, 48, 39, 27, 41, 50, 36],
       metrics: [
         { code: 'REACH-90', v: '17,4M', l: 'Contas alcançadas · 90 dias', real: true },
@@ -166,7 +166,7 @@ export const DATA = {
       { title: 'POSTS MAIS VISTOS · 28 DIAS', rows: [['Quando o carro do EX dela abria a porta sozinho…', '1,4M', 1.4], ['SERÁ QUE ELA VAI GOSTAR???', '540K', 0.54], ['CAVALINHO???', '477K', 0.477], ['Quando tem um cara se achando de hyundai…', '430K', 0.43]], max: 1.4 }
     ]
   },
-  igProfile: [{ v: '1.219', l: 'POSTS', c: 'var(--color-text)' }, { v: '989K', l: 'SEGUIDORES', c: '#F5C400' }, { v: '842', l: 'SEGUINDO', c: 'var(--color-text)' }],
+  igProfile: [{ v: '1.239', l: 'POSTS', c: 'var(--color-text)' }, { v: '1M', l: 'SEGUIDORES', c: '#F5C400' }, { v: '876', l: 'SEGUINDO', c: 'var(--color-text)' }],
   igKpis: [
     { p: '90 DIAS', v: '106M', l: 'Visualizações' },
     { p: '90 DIAS', v: '17,4M', l: 'Contas alcançadas' },

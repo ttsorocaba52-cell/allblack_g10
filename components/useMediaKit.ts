@@ -32,7 +32,7 @@ const EXPLAIN: Record<string, string> = {
 };
 
 const SUMMARY: Record<string, string> = {
-  instagram: "O canal principal: quase 1 milhão de seguidores e 106 milhões de visualizações nos últimos 90 dias.",
+  instagram: "O canal principal: 1 milhão de seguidores e 106 milhões de visualizações nos últimos 90 dias.",
   youtube: "Onde o público passa mais tempo: 286 mil horas assistidas em 28 dias, entre vídeos longos e Shorts.",
   tiktok: "Onde a ALLBLACK chega em gente nova: 536 mil pessoas assistiram pela primeira vez em 28 dias.",
   facebook: "Distribuição complementar dos vídeos. Números ilustrativos, aguardando dados oficiais.",

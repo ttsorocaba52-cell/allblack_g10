@@ -14,8 +14,11 @@ function parse(value: string): Parsed | null {
   return { pre, num: parseFloat(raw.replace(/\./g, "").replace(",", ".")), dec, group: raw.includes("."), suf };
 }
 
-const fmt = (p: Parsed, x: number) =>
-  p.pre + x.toLocaleString("pt-BR", { minimumFractionDigits: p.dec, maximumFractionDigits: p.dec, useGrouping: p.group }) + p.suf;
+const fmt = (p: Parsed, x: number) => {
+  // inteiros pequenos ("1M") contam com uma casa decimal para não saltar de 0 direto para 1
+  const dec = p.dec === 0 && p.num < 10 && p.suf ? 1 : p.dec;
+  return p.pre + x.toLocaleString("pt-BR", { minimumFractionDigits: dec, maximumFractionDigits: dec, useGrouping: p.group }) + p.suf;
+};
 
 const ease = (t: number) => 1 - Math.pow(1 - t, 4);
 

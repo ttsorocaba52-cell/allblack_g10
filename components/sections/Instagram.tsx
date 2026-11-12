@@ -9,7 +9,7 @@ export function Instagram({ v }: { v: V }) {
       {/* 02 INSTAGRAM */}
       <section id="instagram" data-section="instagram" style={{position:"relative",padding:"clamp(72px,10cqw,150px) var(--gutter)",overflow:"hidden"}}>
         <div aria-hidden="true" style={{position:"absolute",right:"-2cqw",top:"clamp(40px,6cqw,90px)",fontFamily:"var(--font-display)",fontSize:"clamp(200px,34cqw,560px)",lineHeight:".8",color:"transparent",WebkitTextStroke:"1px rgba(245,196,0,.16)",pointerEvents:"none",letterSpacing:"-.02em"}}>
-          989K
+          1M
         </div>
         <div style={{position:"relative",display:"flex",flexDirection:"column",gap:"16px",marginBottom:"clamp(32px,5cqw,64px)"}}>
           <div data-reveal="0" style={{display:"flex",alignItems:"center",gap:"12px",fontFamily:"var(--font-mono)",fontSize:"12px",letterSpacing:".14em",color:"var(--color-neutral-500)"}}>
@@ -80,11 +80,11 @@ export function Instagram({ v }: { v: V }) {
                 SEGUIDORES NO INSTAGRAM
               </span>
               <span style={{fontFamily:"var(--font-display)",fontSize:"clamp(120px,17cqw,260px)",lineHeight:".8"}}>
-                <CountUp value={"989K"} />
+                <CountUp value={"1M"} />
               </span>
               <span style={{display:"flex",alignItems:"center",gap:"12px",fontSize:"15px",color:"var(--color-neutral-300)"}}>
                 <span style={{display:"inline-block",padding:"3px 10px",background:"#F5C400",color:"#090909",transform:"skewX(-12deg)",fontFamily:"var(--font-mono)",fontSize:"11px",fontWeight:"500",letterSpacing:".12em"}}>
-                  RUMO A 1M
+                  1 MILHÃO
                 </span>
                 +3 milhões de seguidores somando todas as redes
               </span>
