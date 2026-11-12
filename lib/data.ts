@@ -103,7 +103,14 @@ export const DATA = {
       tags: ['EPISÓDIO 02', 'ESTÉTICA', 'LAVAGEM', 'REVENDA'],
       body: 'Segundo episódio da série Revendendo carros até o carro dos sonhos. O carro da vez passa por lavagem completa e cuidados de estética antes de voltar ao mercado: o tipo de etapa em que produtos e serviços aparecem em uso real, na frente do público.',
       specs: [{ k: 'FORMATO', v: 'Episódio YouTube' }, { k: 'SÉRIE', v: 'Revendendo carros até o carro dos sonhos' }, { k: 'EPISÓDIO', v: '02' }, { k: 'RESULTADO', v: '214K views · 3,7K curtidas · 122 comentários' }],
-      chipsLabel: 'ONDE A MARCA ENTRA NESTE EPISÓDIO', chips: [{ a: 'LAVAGEM', b: 'Shampoo, snow foam, equipamentos' }, { a: 'ESTÉTICA', b: 'Polimento, vitrificação, detalhamento' }, { a: 'ESPAÇO', b: 'Estúdio, iluminação, acessórios' }, { a: 'BASTIDORES', b: 'Stories, reels e shorts derivados' }] }
+      chipsLabel: 'ONDE A MARCA ENTRA NESTE EPISÓDIO', chips: [{ a: 'LAVAGEM', b: 'Shampoo, snow foam, equipamentos' }, { a: 'ESTÉTICA', b: 'Polimento, vitrificação, detalhamento' }, { a: 'ESPAÇO', b: 'Estúdio, iluminação, acessórios' }, { a: 'BASTIDORES', b: 'Stories, reels e shorts derivados' }] },
+    { id: 'p3', num: '03', slotId: 'proj-revenda-ep3', statsLabel: 'EPISÓDIO 03 · YOUTUBE', stats: [{ v: '68K', l: 'VISUALIZAÇÕES' }, { v: '1,7K', l: 'CURTIDAS' }, { v: '91', l: 'COMENTÁRIOS' }], placeholder: 'Civic branco do episódio 3 da série Revendendo carros, em loja de rodas e pneus', photo: '/assets/projeto03-ep3.webp', photoPos: '50% 55%', photoFilter: 'saturate(.85) brightness(.82) contrast(1.06)',
+      title: 'REVENDENDO CARROS · EP\u00a03',
+      short: 'O terceiro carro da jornada: um Civic branco vai para a loja de rodas e pneus para ganhar um novo jogo de rodas antes de seguir rumo à revenda.',
+      tags: ['EPISÓDIO 03', 'CIVIC', 'RODAS', 'PNEUS'],
+      body: 'Terceiro episódio da série Revendendo carros até o carro dos sonhos. O carro da vez é um Civic branco, que passa pela loja de rodas e pneus para trocar o visual: a etapa em que rodas, pneus e serviços aparecem em uso real, com o público acompanhando a escolha e o resultado.',
+      specs: [{ k: 'FORMATO', v: 'Episódio YouTube' }, { k: 'SÉRIE', v: 'Revendendo carros até o carro dos sonhos' }, { k: 'EPISÓDIO', v: '03' }, { k: 'RESULTADO', v: '68K views · 1,7K curtidas · 91 comentários' }],
+      chipsLabel: 'ONDE A MARCA ENTRA NESTE EPISÓDIO', chips: [{ a: 'RODAS', b: 'Modelos, medidas, acabamento' }, { a: 'PNEUS', b: 'Linha, perfil, montagem' }, { a: 'SERVIÇO', b: 'Alinhamento, balanceamento, instalação' }, { a: 'BASTIDORES', b: 'Stories, reels e shorts derivados' }] }
   ],
   sponsorOps: [
     { n: '01', t: 'Patrocínio master', d: 'Marca apresentadora da temporada, com abertura e encerramento.' },
